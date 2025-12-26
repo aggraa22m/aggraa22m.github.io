@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ashish Aggrawal - Hello World!!</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      /* Quick inline fix to make skills look clickable immediately */
+      .skill-tag {
+        cursor: pointer;
+      }
+      /* Style for the new "View Archive" links */
+      .view-archive-link {
+        display: inline-block;
+        margin-top: 20px;
+        font-family: "Courier New", monospace;
+        font-weight: bold;
+        font-size: 18px;
+        color: var(--text-navy);
+        border-bottom: 2px solid var(--rust);
+      }
+      .view-archive-link:hover {
+        color: var(--rust);
+        background-color: #fff8e1; /* Subtle highlight */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="color-bar">
+      <div class="c1"></div><div class="c2"></div><div class="c3"></div>
+      <div class="c4"></div><div class="c5"></div><div class="c6"></div><div class="c7"></div>
+    </div>
+
+    <header>
+      <div class="container header-content">
+        <div class="logo">
+          <h1>ASHISH.</h1>
+        </div>
+        <nav>
+          <a href="#skills">Skills</a>
+          <a href="#projects">Projects</a>
+          <a href="#experience">Experience</a>
+          <a href="#diary">Diary</a>
+        </nav>
+      </div>
+    </header>
+
+    <div class="container">
+      <section class="hero">
+        <div class="hero-content">
+          <div class="hero-text">
+            <h1>I am Ashish Aggrawal<span class="cursor-blink"></span></h1>
+
+            <h2>
+              From Operational Excellence to
+              <span class="highlight-rust">Low-Level Optimization</span>
+            </h2>
+
+            <p>
+              Leveraging 12+ years of leadership experience to build software
+              that matters. I specialize in
+              <span class="txt-rust">high-performance computing</span>,
+              <span class="txt-teal">systems architecture</span>, and
+              <span class="txt-red">machine learning</span>.
+            </p>
+
+            <div class="hero-buttons">
+              <a href="#GitHub" class="btn">GitHub</a>
+              <a href="#LinkedIn" class="btn">LinkedIn</a>
+              <a href="/Resources/resume.pdf" target="_blank" class="btn" style="border-color: var(--rust); color: var(--rust);">Download CV</a>
+            </div>
+          </div>
+
+          <div class="hero-image-wrapper">
+            <img
+              src="https://ui-avatars.com/api/?name=Ashish+Aggrawal&background=0D7C85&color=fff&size=400"
+              alt="Ashish Aggrawal"
+              class="hero-img"
+            />
+          </div>
+        </div>
+      </section>
+
+      <div class="main-layout">
+        <main>
+          <section id="skills" class="skills-section">
+            <div class="section-header">
+                <span style="font-size: 24px">⚡</span>
+              <h3 class="section-title">Technical Arsenal</h3>
+            </div>
+            <div class="skills-grid">
+              <div class="skill-tag" title="Filter projects by C++">C++ / C</div>
+              <div class="skill-tag" title="Filter projects by Kernel">Linux Kernel</div>
+              <div class="skill-tag">Python</div>
+              <div class="skill-tag">TensorFlow</div>
+              <div class="skill-tag">Git</div>
+              <div class="skill-tag">Docker</div>
+              <div class="skill-tag">Bash / Shell</div>
+              <div class="skill-tag">System Design</div>
+            </div>
+          </section>
+
+          <section id="projects">
+            <div class="section-header">
+              <span style="font-size: 24px">📂</span>
+              <h3 class="section-title">Featured Projects</h3>
+            </div>
+            
+            <div class="projects-grid">
+              <div class="project-card bg-green">
+                <div>
+                  <div class="card-icon">📈</div>
+                  <h3>Stock Predictor</h3>
+                  <p>ML-driven trading engine using Python & SciPy with historical backtesting.</p>
+                </div>
+                <div class="card-pills">
+                  <span class="pill">Python</span>
+                  <span class="pill">Pandas</span>
+                </div>
+              </div>
+
+              <div class="project-card bg-blue">
+                <div>
+                  <div class="card-icon">🌐</div>
+                  <h3>The Nebula Project</h3>
+                  <p>High-Performance C++ Network Orchestrator handling multi-threaded concurrency.</p>
+                </div>
+                <div class="card-pills">
+                  <span class="pill">C++20</span>
+                  <span class="pill">TCP/IP</span>
+                </div>
+              </div>
+
+              <div class="project-card bg-red">
+                <div>
+                  <div class="card-icon">🔩</div>
+                  <h3>Driver_Forge</h3>
+                  <p>Context-aware driver generation bridging hardware and OS using LLMs.</p>
+                </div>
+                <div class="card-pills">
+                  <span class="pill">Linux Kernel</span>
+                  <span class="pill">LLMs</span>
+                </div>
+              </div>
+
+              <div class="project-card bg-yellow">
+                <div>
+                  <div class="card-icon">🛡️</div>
+                  <h3>Sys_Sentinel</h3>
+                  <p>Autonomous Kernel Guardian to detect Heisenbugs using forensic replay.</p>
+                </div>
+                <div class="card-pills">
+                  <span class="pill">eBPF</span>
+                  <span class="pill">Security</span>
+                </div>
+              </div>
+            </div>
+
+            <div style="text-align: right;">
+                <a href="projects.html" class="view-archive-link">View Project Archive →</a>
+            </div>
+          </section>
+
+          <section id="experience" class="experience-section">
+            <div class="section-header">
+              <span style="font-size: 24px">💼</span>
+              <h3 class="section-title">Experience Timeline</h3>
+            </div>
+
+            <div class="timeline-item">
+              <div class="role">Student / Career Break</div>
+              <div class="company">Trent University</div>
+              <span class="date">2023 - Present</span>
+              <p>Pursuing Computer Science. Dean's Honour Roll. Focusing on low-level systems and OS architecture.</p>
+            </div>
+
+            <div class="timeline-item">
+              <div class="role">Operational Leader</div>
+              <div class="company">Amazon</div>
+              <span class="date">3 Years</span>
+              <p>Managed large-scale operations. Developed leadership skills in high-pressure environments.</p>
+            </div>
+
+            <div class="timeline-item">
+              <div class="role">Various Professional Roles</div>
+              <div class="company">Tech & Operations</div>
+              <span class="date">Previous 9 Years</span>
+              <p>Total of 12 years professional experience across various sectors.</p>
+            </div>
+          </section>
+        </main>
+
+        <aside id="diary" class="sidebar">
+          <div class="sidebar-title"><span>📖</span> Digital Diary</div>
+          <ul class="diary-list">
+            <li>
+              <span class="diary-date">Dec 20, 2024</span>
+              <a href="#" class="diary-link">Cache Locality in Neural Networks</a>
+              <p class="diary-excerpt">Optimizing L1/L2 cache usage reduced matrix multiplication latency by 40%.</p>
+            </li>
+            <li>
+              <span class="diary-date">Dec 15, 2024</span>
+              <a href="#" class="diary-link">Lock-Free Queue for HFT</a>
+              <p class="diary-excerpt">Exploring atomic operations and memory ordering.</p>
+            </li>
+            <li>
+              <span class="diary-date">Dec 05, 2024</span>
+              <a href="#" class="diary-link">LLMs for Driver Code</a>
+              <p class="diary-excerpt">Testing Mistral for generating kernel driver boilerplate.</p>
+            </li>
+            <li>
+              <span class="diary-date">Nov 28, 2024</span>
+              <a href="#" class="diary-link">Vim Motions for Speed</a>
+              <p class="diary-excerpt">Why I finally switched to Vim for C++ development.</p>
+            </li>
+          </ul>
+
+          <div style="margin-top: 20px; text-align: center;">
+            <a href="diary.html" class="view-archive-link" style="font-size: 14px;">View All Logs →</a>
+          </div>
+        </aside>
+      </div>
+    </div>
+    <footer>
+        <p> © 2025 Ashish Aggrawal.</p>
+    </footer>
+  </body>
+</html>
