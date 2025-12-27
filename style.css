@@ -29,7 +29,7 @@ body {
   background-color: var(--bg-cream);
   color: var(--text-navy);
   line-height: 1.6;
-  overflow-x: hidden;
+  overflow-x: hidden; /* Prevents horizontal scroll on small screens */
 }
 
 .container {
@@ -46,6 +46,13 @@ ul {
   list-style: none;
 }
 
+/* Utility Class to replace inline HTML styles */
+.page-header {
+  margin-top: 30px; 
+  border: none; 
+  font-size: 40px;
+}
+
 /* --- 3. COLOR BAR --- */
 .color-bar {
   display: flex;
@@ -55,34 +62,13 @@ ul {
   top: 0;
   z-index: 200;
 }
-.c1 {
-  background-color: var(--text-navy);
-  flex: 1;
-}
-.c2 {
-  background-color: var(--teal);
-  flex: 1;
-}
-.c3 {
-  background-color: var(--mint);
-  flex: 1;
-}
-.c4 {
-  background-color: var(--grey);
-  flex: 1;
-}
-.c5 {
-  background-color: var(--mustard);
-  flex: 1;
-}
-.c6 {
-  background-color: var(--rust);
-  flex: 1;
-}
-.c7 {
-  background-color: var(--red);
-  flex: 1;
-}
+.c1 { background-color: var(--text-navy); flex: 1; }
+.c2 { background-color: var(--teal); flex: 1; }
+.c3 { background-color: var(--mint); flex: 1; }
+.c4 { background-color: var(--grey); flex: 1; }
+.c5 { background-color: var(--mustard); flex: 1; }
+.c6 { background-color: var(--rust); flex: 1; }
+.c7 { background-color: var(--red); flex: 1; }
 
 /* --- 4. HEADER --- */
 header {
@@ -175,13 +161,8 @@ nav a:hover::after {
   vertical-align: baseline;
 }
 @keyframes blink {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0;
-  }
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
 }
 
 .hero h2 {
@@ -203,18 +184,9 @@ nav a:hover::after {
 }
 
 /* Highlight classes */
-.txt-rust {
-  color: var(--rust);
-  font-weight: 800;
-}
-.txt-teal {
-  color: var(--teal);
-  font-weight: 800;
-}
-.txt-red {
-  color: var(--red);
-  font-weight: 800;
-}
+.txt-rust { color: var(--rust); font-weight: 800; }
+.txt-teal { color: var(--teal); font-weight: 800; }
+.txt-red { color: var(--red); font-weight: 800; }
 
 .highlight-rust {
   color: var(--rust);
@@ -253,15 +225,16 @@ nav a:hover::after {
   background-color: var(--text-navy);
 }
 
-/* Image Styling */
+/* --- HERO IMAGE (FIXED) --- */
 .hero-image-wrapper {
   flex-shrink: 0;
   position: relative;
 }
 
 .hero-img {
-  width: 350px;
-  height: 350px;
+  width: 100%;            /* Allows shrinking on mobile */
+  max-width: 350px;       /* Caps width for desktop */
+  height: auto;           /* Maintains aspect ratio */
   object-fit: cover;
   border: 4px solid var(--text-navy);
   box-shadow: 16px 16px 0 var(--rust);
@@ -277,10 +250,8 @@ nav a:hover::after {
   padding: 60px 0;
 }
 
-/* --- 7. SKILLS (Auto-Colored Tags) --- */
-.skills-section {
-  margin-bottom: 60px;
-}
+/* --- 7. SKILLS --- */
+.skills-section { margin-bottom: 60px; }
 
 .section-header {
   display: flex;
@@ -316,29 +287,17 @@ nav a:hover::after {
   box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.2);
   transition: transform 0.2s;
   border: 2px solid var(--text-navy);
+  cursor: pointer;
 }
-.skill-tag:hover {
-  transform: translateY(-4px);
-}
+.skill-tag:hover { transform: translateY(-4px); }
 
-.skill-tag:nth-of-type(5n + 1) {
-  background-color: var(--text-navy);
-}
-.skill-tag:nth-of-type(5n + 2) {
-  background-color: var(--teal);
-}
-.skill-tag:nth-of-type(5n + 3) {
-  background-color: var(--rust);
-}
-.skill-tag:nth-of-type(5n + 4) {
-  background-color: var(--mustard);
-  color: var(--text-navy);
-}
-.skill-tag:nth-of-type(5n + 5) {
-  background-color: var(--red);
-}
+.skill-tag:nth-of-type(5n + 1) { background-color: var(--text-navy); }
+.skill-tag:nth-of-type(5n + 2) { background-color: var(--teal); }
+.skill-tag:nth-of-type(5n + 3) { background-color: var(--rust); }
+.skill-tag:nth-of-type(5n + 4) { background-color: var(--mustard); color: var(--text-navy); }
+.skill-tag:nth-of-type(5n + 5) { background-color: var(--red); }
 
-/* --- 8. PROJECTS (Colorful Cards) --- */
+/* --- 8. PROJECTS --- */
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -362,18 +321,10 @@ nav a:hover::after {
   box-shadow: 12px 12px 0 var(--text-navy);
 }
 
-.bg-green {
-  background-color: var(--bento-green);
-}
-.bg-blue {
-  background-color: var(--bento-blue);
-}
-.bg-red {
-  background-color: var(--bento-red);
-}
-.bg-yellow {
-  background-color: var(--bento-yellow);
-}
+.bg-green { background-color: var(--bento-green); }
+.bg-blue { background-color: var(--bento-blue); }
+.bg-red { background-color: var(--bento-red); }
+.bg-yellow { background-color: var(--bento-yellow); }
 
 .card-icon {
   width: 50px;
@@ -417,10 +368,22 @@ nav a:hover::after {
   text-transform: uppercase;
 }
 
-/* --- 9. WORK EXPERIENCE --- */
-.experience-section {
-  margin-top: 80px;
+.view-archive-link {
+    display: inline-block;
+    margin-top: 20px;
+    font-family: "Courier New", monospace;
+    font-weight: bold;
+    font-size: 18px;
+    color: var(--text-navy);
+    border-bottom: 2px solid var(--rust);
 }
+.view-archive-link:hover {
+    color: var(--rust);
+    background-color: #fff8e1;
+}
+
+/* --- 9. WORK EXPERIENCE --- */
+.experience-section { margin-top: 80px; }
 
 .timeline-item {
   border-left: 4px solid var(--text-navy);
@@ -428,9 +391,7 @@ nav a:hover::after {
   padding-bottom: 40px;
   position: relative;
 }
-.timeline-item:last-child {
-  border-left: 4px solid transparent;
-}
+.timeline-item:last-child { border-left: 4px solid transparent; }
 
 .timeline-item::before {
   content: "";
@@ -443,24 +404,9 @@ nav a:hover::after {
   border: 3px solid var(--text-navy);
   border-radius: 50%;
 }
-.role {
-  font-size: 25px;
-  font-weight: bold;
-  color: var(--text-navy);
-}
-.company {
-  color: var(--rust);
-  font-weight: bold;
-  font-family: "Courier New", monospace;
-  font-size: 16px;
-}
-.date {
-  font-size: 14px;
-  color: #666;
-  margin-bottom: 8px;
-  display: block;
-  font-style: italic;
-}
+.role { font-size: 25px; font-weight: bold; color: var(--text-navy); }
+.company { color: var(--rust); font-weight: bold; font-family: "Courier New", monospace; font-size: 16px; }
+.date { font-size: 14px; color: #666; margin-bottom: 8px; display: block; font-style: italic; }
 
 /* --- 10. RIGHT SIDEBAR (Diary) --- */
 .sidebar {
@@ -488,10 +434,7 @@ nav a:hover::after {
   border-bottom: 1px dashed var(--mint);
   padding-bottom: 16px;
 }
-.diary-list li:last-child {
-  border: none;
-  padding-bottom: 0;
-}
+.diary-list li:last-child { border: none; padding-bottom: 0; }
 
 .diary-date {
   font-family: "Courier New", monospace;
@@ -509,17 +452,11 @@ nav a:hover::after {
   margin-bottom: 4px;
   line-height: 1.3;
 }
-.diary-link:hover {
-  text-decoration: underline;
-  color: var(--teal);
-}
+.diary-link:hover { text-decoration: underline; color: var(--teal); }
 
-.diary-excerpt {
-  font-size: 13px;
-  color: #555;
-}
+.diary-excerpt { font-size: 13px; color: #555; }
 
-/* --- 8. FOOTER --- */
+/* --- 11. FOOTER --- */
 footer {
     background: var(--text-navy);
     color: var(--bg-cream);
@@ -530,29 +467,88 @@ footer {
     margin-top: 70px;
 }
 
-/* Responsive */
+/* --- 12. RESPONSIVE MEDIA QUERIES (UPDATED) --- */
 @media (max-width: 900px) {
-  .hero-content {
-    flex-direction: column-reverse;
-    text-align: center;
-    gap: 40px;
+  
+  /* Global Container */
+  .container {
+    padding: 0 20px;
   }
+
+  /* Header & Navigation */
+  .header-content {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  nav {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+  }
+  
+  nav a {
+    font-size: 18px; /* Reduced to prevent wrapping issues */
+  }
+
+  /* Hero Section */
+  .hero-content {
+    flex-direction: column-reverse; /* Puts text below image */
+    text-align: center;
+    gap: 30px;
+  }
+
   .hero-text {
     max-width: 100%;
   }
+
   .hero h1 {
-    font-size: 48px;
-    white-space: normal;
+    font-size: 38px; /* Safe size for mobile */
+    line-height: 1.1;
   }
+  
+  .hero h2 {
+    font-size: 22px;
+  }
+
   .hero-buttons {
-    justify-content: center;
+    flex-direction: column; /* Stack buttons vertically */
+    width: 100%;
+    gap: 15px;
   }
+  
+  .hero-buttons .btn {
+    width: 100%;
+    display: block;
+    text-align: center;
+  }
+
+  /* Layout Split (Main/Sidebar) */
   .main-layout {
     grid-template-columns: 1fr;
   }
+
   .sidebar {
     position: relative;
     top: 0;
     margin-top: 40px;
+    width: 100%;
+  }
+
+  /* Projects Grid */
+  .projects-grid {
+    grid-template-columns: 1fr; /* Force 1 column on mobile */
+  }
+  
+  .project-card {
+    min-height: auto; /* Allow height to adjust to content */
+  }
+
+  /* Dynamic Title Resizing */
+  .page-header {
+    font-size: 32px;
+  }
+  .section-title {
+    font-size: 28px;
   }
 }
