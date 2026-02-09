@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -8,8 +8,13 @@
   </head>
   <body>
     <div class="color-bar">
-      <div class="c1"></div><div class="c2"></div><div class="c3"></div>
-      <div class="c4"></div><div class="c5"></div><div class="c6"></div><div class="c7"></div>
+      <div class="c1"></div>
+      <div class="c2"></div>
+      <div class="c3"></div>
+      <div class="c4"></div>
+      <div class="c5"></div>
+      <div class="c6"></div>
+      <div class="c7"></div>
     </div>
 
     <header>
@@ -20,61 +25,95 @@
         <nav>
           <a href="index.html">Home</a>
           <a href="projects.html">Projects</a>
-          <a href="diary.html" style="color: var(--rust);">Diary</a>
+          <a href="diary.html" style="color: var(--rust)">Diary</a>
         </nav>
       </div>
     </header>
 
-    <div class="container" style="padding-top: 60px; padding-bottom: 60px;">
-      
-      <div style="max-width: 800px; margin: 0 auto;">
-        
-        <div style="margin-bottom: 40px; border-bottom: 2px dashed var(--text-navy); padding-bottom: 20px;">
-            <a href="index.html" class="btn" style="font-size: 16px; padding: 10px 20px;">← Back to Home</a>
-            <h2 class="section-title" >Engineering Log</h2>
-            <p>A chronological archive of my learnings in Systems, Kernels, and Life.</p>
+    <div class="container" style="padding-top: 60px; padding-bottom: 60px">
+      <div style="max-width: 800px; margin: 0 auto">
+        <div
+          style="
+            margin-bottom: 40px;
+            border-bottom: 2px dashed var(--text-navy);
+            padding-bottom: 20px;
+          "
+        >
+          <a
+            href="index.html"
+            class="btn"
+            style="font-size: 16px; padding: 10px 20px"
+            >← Back to Home</a
+          >
+          <h2 class="section-title">Engineering Log</h2>
+          <p>
+            A chronological archive of my learnings in Systems, Kernels, and
+            Life.
+          </p>
         </div>
 
         <ul class="diary-list">
-            
-            <li>
-                <span class="diary-date">Dec 20, 2024</span>
-                <a href="#" class="diary-link" style="font-size: 24px;">Cache Locality in Neural Networks</a>
-                <p class="diary-excerpt" style="font-size: 16px;">
-                  Optimizing L1/L2 cache usage reduced matrix multiplication latency by 40%. 
-                  I discovered that simply transposing the matrix before multiplication improved hits significantly...
-                </p>
-            </li>
+          <li>
+            <span class="diary-date">Dec 20, 2024</span>
+            <a
+              href="https://github.com/martin0004/drone_control_system"
+              target="blank"
+              class="diary-link"
+              style="font-size: 24px"
+              >Drone Control System - PID Tuning</a
+            >
+            <p class="diary-excerpt" style="font-size: 16px">
+              A deep dive into how pure mathematics translates into physical
+              motor stability.
+            </p>
+          </li>
 
-            <li>
-                <span class="diary-date">Dec 15, 2024</span>
-                <a href="#" class="diary-link" style="font-size: 24px;">Lock-Free Queue for HFT</a>
-                <p class="diary-excerpt" style="font-size: 16px;">
-                  Exploring atomic operations and memory ordering in C++. The challenge was understanding 
-                  memory_order_acquire vs memory_order_release...
-                </p>
-            </li>
+          <li>
+            <span class="diary-date">Dec 15, 2024</span>
+            <a
+              href="https://www.webpronews.com/toyotas-secret-weapon-inside-fluorite-the-automakers-surprising-leap-into-open-source-game-engine-development/"
+              target="blank"
+              class="diary-link"
+              style="font-size: 24px"
+              >Toyota’s Leap Into Open-Source Engines</a
+            >
+            <p class="diary-excerpt" style="font-size: 16px">
+              A 2026 case study on modular C++ architecture in autonomous
+              stacks.
+            </p>
+          </li>
 
-            <li>
-                <span class="diary-date">Dec 05, 2024</span>
-                <a href="#" class="diary-link" style="font-size: 24px;">LLMs for Driver Code</a>
-                <p class="diary-excerpt" style="font-size: 16px;">
-                  Testing Mistral for generating kernel driver boilerplate. It handles basic chardev setup well, 
-                  but fails at complex IRQ handling...
-                </p>
-            </li>
+          <li>
+            <span class="diary-date">Dec 05, 2024</span>
+            <a
+              href="https://optiver.com/working-at-optiver/career-hub/designing-low-latency-cpp-systems/"
+              target="blank"
+              class="diary-link"
+              style="font-size: 24px"
+              >When Nanoseconds Matter: Ultrafast Trading Systems in C++</a
+            >
+            <p class="diary-excerpt" style="font-size: 16px">
+              A summary of a high-level talk from Optiver (2025). It breaks down
+              how software engineers in HFT manage CPU memory hierarchies and
+              execution pipelines to shave nanoseconds off trade
+            </p>
+          </li>
 
-             <li>
-                <span class="diary-date">Nov 28, 2024</span>
-                <a href="#" class="diary-link" style="font-size: 24px;">Vim Motions for Speed</a>
-                <p class="diary-excerpt" style="font-size: 16px;">
-                  Why I finally switched to Vim for C++ development. The ability to jump between functions 
-                  using ctags is a game changer...
-                </p>
-            </li>
-
+          <li>
+            <span class="diary-date">Nov 28, 2024</span>
+            <a
+              href="https://www.freecodecamp.org/news/vim-language-and-motions-explained/"
+              target="blank"
+              class="diary-link"
+              style="font-size: 24px"
+              >Vim Motions for Speed</a
+            >
+            <p class="diary-excerpt" style="font-size: 16px">
+              Why I finally switched to Vim for C++ development. The ability to
+              jump between functions using ctags is a game changer...
+            </p>
+          </li>
         </ul>
-
       </div>
     </div>
 
