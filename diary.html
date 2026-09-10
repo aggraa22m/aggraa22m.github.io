@@ -19,6 +19,7 @@
     <meta name="theme-color" content="#131e26" media="(prefers-color-scheme: dark)" />
     <script>
       (function () {
+        document.documentElement.classList.add("js");
         try {
           var s = localStorage.getItem("theme");
           var d = s
@@ -67,7 +68,7 @@
 
     <main id="main" class="container" style="padding-top: 60px; padding-bottom: 60px">
       <div class="archive-block">
-        <div class="page-intro">
+        <div class="page-intro reveal">
           <a href="index.html" class="btn btn-secondary" style="font-size: 16px; padding: 10px 20px"
             >← Back to Home</a
           >
@@ -78,7 +79,7 @@
           </p>
         </div>
 
-        <ul class="diary-list stacked">
+        <ul class="diary-list stacked reveal-stagger">
           <!-- DIARY_ARCHIVE:START -->
           <li>
             <time class="diary-date" datetime="2026-09-17">Sep 17, 2026</time>
@@ -118,13 +119,13 @@
           <!-- DIARY_ARCHIVE:END -->
         </ul>
 
-        <h2 class="section-title subsection-title">Reading List</h2>
+        <h2 class="section-title subsection-title reveal">Reading List</h2>
         <p style="color: var(--text-muted)">
           Articles and talks from around the web that shaped how I think about
           this work.
         </p>
 
-        <ul class="diary-list stacked" style="margin-top: 22px">
+        <ul class="diary-list stacked reveal-stagger" style="margin-top: 22px">
           <li>
             <a
               href="https://optiver.com/working-at-optiver/career-hub/designing-low-latency-cpp-systems/"
@@ -199,10 +200,14 @@
         if (btn)
           btn.addEventListener("click", function () {
             var dark = root.getAttribute("data-theme") !== "dark";
+            root.classList.add("theme-anim");
             root.setAttribute("data-theme", dark ? "dark" : "light");
             try {
               localStorage.setItem("theme", dark ? "dark" : "light");
             } catch (e) {}
+            setTimeout(function () {
+              root.classList.remove("theme-anim");
+            }, 420);
           });
         try {
           matchMedia("(prefers-color-scheme: dark)").addEventListener(
@@ -213,6 +218,28 @@
             }
           );
         } catch (e) {}
+
+        var targets = document.querySelectorAll(".reveal, .reveal-stagger");
+        if (!("IntersectionObserver" in window)) {
+          targets.forEach(function (el) {
+            el.classList.add("in-view");
+          });
+          return;
+        }
+        var io = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (e) {
+              if (e.isIntersecting) {
+                e.target.classList.add("in-view");
+                io.unobserve(e.target);
+              }
+            });
+          },
+          { threshold: 0.12, rootMargin: "0px 0px -6% 0px" }
+        );
+        targets.forEach(function (el) {
+          io.observe(el);
+        });
       })();
     </script>
   </body>

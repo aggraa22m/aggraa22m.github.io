@@ -38,6 +38,7 @@ const CODE_PLACEHOLDER = "@@CODEBLOCK"; // unlikely to collide with real prose
 
 const THEME_INIT_SCRIPT = `<script>
       (function () {
+        document.documentElement.classList.add("js");
         try {
           var s = localStorage.getItem("theme");
           var d = s
@@ -55,10 +56,14 @@ const THEME_TOGGLE_SCRIPT = `<script>
         if (btn)
           btn.addEventListener("click", function () {
             var dark = root.getAttribute("data-theme") !== "dark";
+            root.classList.add("theme-anim");
             root.setAttribute("data-theme", dark ? "dark" : "light");
             try {
               localStorage.setItem("theme", dark ? "dark" : "light");
             } catch (e) {}
+            setTimeout(function () {
+              root.classList.remove("theme-anim");
+            }, 420);
           });
         try {
           matchMedia("(prefers-color-scheme: dark)").addEventListener(
@@ -69,6 +74,28 @@ const THEME_TOGGLE_SCRIPT = `<script>
             }
           );
         } catch (e) {}
+
+        var targets = document.querySelectorAll(".reveal, .reveal-stagger");
+        if (!("IntersectionObserver" in window)) {
+          targets.forEach(function (el) {
+            el.classList.add("in-view");
+          });
+          return;
+        }
+        var io = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (e) {
+              if (e.isIntersecting) {
+                e.target.classList.add("in-view");
+                io.unobserve(e.target);
+              }
+            });
+          },
+          { threshold: 0.1, rootMargin: "0px 0px -5% 0px" }
+        );
+        targets.forEach(function (el) {
+          io.observe(el);
+        });
       })();
     </script>`;
 
@@ -276,7 +303,7 @@ function renderPostPage({ slug, title, date, summary, bodyHtml, newer, older }) 
   const postNav =
     newer || older
       ? `
-        <nav class="post-nav" aria-label="More posts">
+        <nav class="post-nav reveal" aria-label="More posts">
           ${link(newer, "← Newer", "prev")}
           ${link(older, "Older →", "next")}
         </nav>`

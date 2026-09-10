@@ -36,6 +36,7 @@
     </script>
     <script>
       (function () {
+        document.documentElement.classList.add("js");
         try {
           var s = localStorage.getItem("theme");
           var d = s
@@ -116,7 +117,7 @@
 <p>Correct memory interpretation means respecting the physical byte layout, the alignment constraints, and the difference between host and wire formats.</p>
         </div>
 
-        <nav class="post-nav" aria-label="More posts">
+        <nav class="post-nav reveal" aria-label="More posts">
           <span></span>
           <a href="why-abs-int-min-is-negative.html" rel="next"><span>Older →</span><strong>Why abs(INT_MIN) returns a negative number</strong></a>
         </nav>
@@ -141,10 +142,14 @@
         if (btn)
           btn.addEventListener("click", function () {
             var dark = root.getAttribute("data-theme") !== "dark";
+            root.classList.add("theme-anim");
             root.setAttribute("data-theme", dark ? "dark" : "light");
             try {
               localStorage.setItem("theme", dark ? "dark" : "light");
             } catch (e) {}
+            setTimeout(function () {
+              root.classList.remove("theme-anim");
+            }, 420);
           });
         try {
           matchMedia("(prefers-color-scheme: dark)").addEventListener(
@@ -155,6 +160,28 @@
             }
           );
         } catch (e) {}
+
+        var targets = document.querySelectorAll(".reveal, .reveal-stagger");
+        if (!("IntersectionObserver" in window)) {
+          targets.forEach(function (el) {
+            el.classList.add("in-view");
+          });
+          return;
+        }
+        var io = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (e) {
+              if (e.isIntersecting) {
+                e.target.classList.add("in-view");
+                io.unobserve(e.target);
+              }
+            });
+          },
+          { threshold: 0.1, rootMargin: "0px 0px -5% 0px" }
+        );
+        targets.forEach(function (el) {
+          io.observe(el);
+        });
       })();
     </script>
   </body>

@@ -13,6 +13,7 @@
     <meta name="theme-color" content="#131e26" media="(prefers-color-scheme: dark)" />
     <script>
       (function () {
+        document.documentElement.classList.add("js");
         try {
           var s = localStorage.getItem("theme");
           var d = s
@@ -92,10 +93,14 @@
         if (btn)
           btn.addEventListener("click", function () {
             var dark = root.getAttribute("data-theme") !== "dark";
+            root.classList.add("theme-anim");
             root.setAttribute("data-theme", dark ? "dark" : "light");
             try {
               localStorage.setItem("theme", dark ? "dark" : "light");
             } catch (e) {}
+            setTimeout(function () {
+              root.classList.remove("theme-anim");
+            }, 420);
           });
       })();
     </script>

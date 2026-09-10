@@ -36,6 +36,7 @@
     </script>
     <script>
       (function () {
+        document.documentElement.classList.add("js");
         try {
           var s = localStorage.getItem("theme");
           var d = s
@@ -108,7 +109,7 @@
 <p>“What guarantees this access is safe when another thread runs at exactly the wrong moment?”</p>
         </div>
 
-        <nav class="post-nav" aria-label="More posts">
+        <nav class="post-nav reveal" aria-label="More posts">
           <a href="floating-point-is-not-associative.html" rel="prev"><span>← Newer</span><strong>Floating-point addition is not associative</strong></a>
           <a href="portable-types-in-c.html" rel="next"><span>Older →</span><strong>The hidden cost of choosing the wrong variable type</strong></a>
         </nav>
@@ -133,10 +134,14 @@
         if (btn)
           btn.addEventListener("click", function () {
             var dark = root.getAttribute("data-theme") !== "dark";
+            root.classList.add("theme-anim");
             root.setAttribute("data-theme", dark ? "dark" : "light");
             try {
               localStorage.setItem("theme", dark ? "dark" : "light");
             } catch (e) {}
+            setTimeout(function () {
+              root.classList.remove("theme-anim");
+            }, 420);
           });
         try {
           matchMedia("(prefers-color-scheme: dark)").addEventListener(
@@ -147,6 +152,28 @@
             }
           );
         } catch (e) {}
+
+        var targets = document.querySelectorAll(".reveal, .reveal-stagger");
+        if (!("IntersectionObserver" in window)) {
+          targets.forEach(function (el) {
+            el.classList.add("in-view");
+          });
+          return;
+        }
+        var io = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (e) {
+              if (e.isIntersecting) {
+                e.target.classList.add("in-view");
+                io.unobserve(e.target);
+              }
+            });
+          },
+          { threshold: 0.1, rootMargin: "0px 0px -5% 0px" }
+        );
+        targets.forEach(function (el) {
+          io.observe(el);
+        });
       })();
     </script>
   </body>

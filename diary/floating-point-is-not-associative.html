@@ -36,6 +36,7 @@
     </script>
     <script>
       (function () {
+        document.documentElement.classList.add("js");
         try {
           var s = localStorage.getItem("theme");
           var d = s
@@ -118,7 +119,7 @@
 <p>Computers represent real numbers as finite, logarithmic approximations. Assuming algebraic equivalence leads straight to precision loss and non-deterministic systems.</p>
         </div>
 
-        <nav class="post-nav" aria-label="More posts">
+        <nav class="post-nav reveal" aria-label="More posts">
           <a href="overflow-check-may-not-survive-o2.html" rel="prev"><span>← Newer</span><strong>Your signed-overflow check may not survive -O2</strong></a>
           <a href="why-a-plain-pointer-broke-my-lock-free-queue.html" rel="next"><span>Older →</span><strong>Why a 'plain' pointer broke my lock-free queue</strong></a>
         </nav>
@@ -143,10 +144,14 @@
         if (btn)
           btn.addEventListener("click", function () {
             var dark = root.getAttribute("data-theme") !== "dark";
+            root.classList.add("theme-anim");
             root.setAttribute("data-theme", dark ? "dark" : "light");
             try {
               localStorage.setItem("theme", dark ? "dark" : "light");
             } catch (e) {}
+            setTimeout(function () {
+              root.classList.remove("theme-anim");
+            }, 420);
           });
         try {
           matchMedia("(prefers-color-scheme: dark)").addEventListener(
@@ -157,6 +162,28 @@
             }
           );
         } catch (e) {}
+
+        var targets = document.querySelectorAll(".reveal, .reveal-stagger");
+        if (!("IntersectionObserver" in window)) {
+          targets.forEach(function (el) {
+            el.classList.add("in-view");
+          });
+          return;
+        }
+        var io = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (e) {
+              if (e.isIntersecting) {
+                e.target.classList.add("in-view");
+                io.unobserve(e.target);
+              }
+            });
+          },
+          { threshold: 0.1, rootMargin: "0px 0px -5% 0px" }
+        );
+        targets.forEach(function (el) {
+          io.observe(el);
+        });
       })();
     </script>
   </body>

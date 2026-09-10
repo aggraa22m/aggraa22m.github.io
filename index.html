@@ -46,6 +46,7 @@
     </script>
     <script>
       (function () {
+        document.documentElement.classList.add("js");
         try {
           var s = localStorage.getItem("theme");
           var d = s
@@ -95,7 +96,7 @@
 
     <div class="container">
       <section class="hero">
-        <div class="hero-content">
+        <div class="hero-content reveal">
           <div class="hero-text">
             <h1>I am Ashish Aggrawal</h1>
 
@@ -154,11 +155,11 @@
       <div class="main-layout">
         <main class="full-width-content" id="main">
           <section id="skills" class="skills-section">
-            <div class="section-header">
+            <div class="section-header reveal">
               <h2 class="section-title">Technical Arsenal</h2>
             </div>
             <span class="skills-subheading">Core</span>
-            <div class="skills-grid">
+            <div class="skills-grid reveal-stagger">
               <div class="skill-card">
                 <span class="skill-icon-badge"
                   ><img class="skill-icon" src="Resources/icons/c.svg" alt="C" width="30" height="30" loading="lazy"
@@ -186,7 +187,7 @@
             </div>
 
             <span class="skills-subheading">Tools &amp; Libraries</span>
-            <div class="skills-grid">
+            <div class="skills-grid reveal-stagger">
               <div class="skill-card">
                 <span class="skill-icon-badge"
                   ><img class="skill-icon" src="Resources/icons/git.svg" alt="Git" width="30" height="30" loading="lazy"
@@ -229,7 +230,7 @@
             <div class="focus-groups">
               <div class="focus-group">
                 <div class="focus-group-label">Operating systems</div>
-                <div class="skill-chip-row">
+                <div class="skill-chip-row reveal-stagger">
                   <span class="skill-chip">OS Architecture</span>
                   <span class="skill-chip">Process Scheduling</span>
                   <span class="skill-chip">Memory Management</span>
@@ -238,7 +239,7 @@
               </div>
               <div class="focus-group">
                 <div class="focus-group-label">Performance &amp; concurrency</div>
-                <div class="skill-chip-row">
+                <div class="skill-chip-row reveal-stagger">
                   <span class="skill-chip">Low-Latency Execution</span>
                   <span class="skill-chip">Concurrent Systems</span>
                   <span class="skill-chip">Assembly</span>
@@ -247,7 +248,7 @@
               </div>
               <div class="focus-group">
                 <div class="focus-group-label">Machine learning &amp; NLP</div>
-                <div class="skill-chip-row">
+                <div class="skill-chip-row reveal-stagger">
                   <span class="skill-chip">Applied Machine Learning</span>
                   <span class="skill-chip">N-gram Models</span>
                   <span class="skill-chip">LSTM Encoder&ndash;Decoder</span>
@@ -260,26 +261,26 @@
           </section>
 
           <section id="projects">
-            <div class="section-header">
+            <div class="section-header reveal">
               <h2 class="section-title">Featured Projects</h2>
             </div>
 
             <div class="projects-grid">
-              <div class="project-card project-wip">
+              <div class="project-card project-wip reveal-fade">
                 <div class="card-thumb">
                   <svg viewBox="0 0 400 150" role="img" aria-label="Order book depth: bids versus asks around the spread">
-                    <line x1="200" y1="10" x2="200" y2="120" stroke="#002535" stroke-width="2" stroke-dasharray="4 4" />
-                    <rect x="138" y="16" width="60" height="13" fill="#0a5a60" stroke="#002535" stroke-width="2" />
-                    <rect x="103" y="36" width="95" height="13" fill="#0a5a60" stroke="#002535" stroke-width="2" />
-                    <rect x="68" y="56" width="130" height="13" fill="#0a5a60" stroke="#002535" stroke-width="2" />
-                    <rect x="33" y="76" width="165" height="13" fill="#0a5a60" stroke="#002535" stroke-width="2" />
-                    <rect x="202" y="16" width="55" height="13" fill="#8f201c" stroke="#002535" stroke-width="2" />
-                    <rect x="202" y="36" width="90" height="13" fill="#8f201c" stroke="#002535" stroke-width="2" />
-                    <rect x="202" y="56" width="125" height="13" fill="#8f201c" stroke="#002535" stroke-width="2" />
-                    <rect x="202" y="76" width="160" height="13" fill="#8f201c" stroke="#002535" stroke-width="2" />
-                    <line x1="12" y1="112" x2="388" y2="112" stroke="#002535" stroke-width="2" />
-                    <text x="118" y="134" font-family="'IBM Plex Mono',monospace" font-size="12" fill="#002535" text-anchor="middle">BIDS</text>
-                    <text x="288" y="134" font-family="'IBM Plex Mono',monospace" font-size="12" fill="#002535" text-anchor="middle">ASKS</text>
+                    <line class="d" pathLength="1" x1="12" y1="112" x2="388" y2="112" stroke="#002535" stroke-width="2" />
+                    <line class="fade" style="animation-delay: 0.35s" x1="200" y1="10" x2="200" y2="120" stroke="#002535" stroke-width="2" stroke-dasharray="4 4" />
+                    <rect class="g gr" style="animation-delay: 0.15s" x="138" y="16" width="60" height="13" fill="#0a5a60" stroke="#002535" stroke-width="2" />
+                    <rect class="g gr" style="animation-delay: 0.22s" x="103" y="36" width="95" height="13" fill="#0a5a60" stroke="#002535" stroke-width="2" />
+                    <rect class="g gr" style="animation-delay: 0.29s" x="68" y="56" width="130" height="13" fill="#0a5a60" stroke="#002535" stroke-width="2" />
+                    <rect class="g gr" style="animation-delay: 0.36s" x="33" y="76" width="165" height="13" fill="#0a5a60" stroke="#002535" stroke-width="2" />
+                    <rect class="g gl" style="animation-delay: 0.15s" x="202" y="16" width="55" height="13" fill="#8f201c" stroke="#002535" stroke-width="2" />
+                    <rect class="g gl" style="animation-delay: 0.22s" x="202" y="36" width="90" height="13" fill="#8f201c" stroke="#002535" stroke-width="2" />
+                    <rect class="g gl" style="animation-delay: 0.29s" x="202" y="56" width="125" height="13" fill="#8f201c" stroke="#002535" stroke-width="2" />
+                    <rect class="g gl" style="animation-delay: 0.36s" x="202" y="76" width="160" height="13" fill="#8f201c" stroke="#002535" stroke-width="2" />
+                    <text class="fade" style="animation-delay: 0.5s" x="118" y="134" font-family="'IBM Plex Mono',monospace" font-size="12" fill="#002535" text-anchor="middle">BIDS</text>
+                    <text class="fade" style="animation-delay: 0.5s" x="288" y="134" font-family="'IBM Plex Mono',monospace" font-size="12" fill="#002535" text-anchor="middle">ASKS</text>
                   </svg>
                 </div>
                 <div class="card-body">
@@ -300,7 +301,7 @@
                 href="https://github.com/ashishaggrawal/Custom-C-Memory-Allocator-Simulator"
                 target="_blank"
                 rel="noopener"
-                class="project-card project-card--teal"
+                class="project-card project-card--teal reveal-fade"
               >
                 <span class="card-repo" aria-hidden="true"><svg><use href="#ico-github" /></svg></span>
                 <div class="card-thumb">
@@ -310,19 +311,19 @@
                       <marker id="lfq-r" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0 0L6 3L0 6z" fill="#b5450b" /></marker>
                       <marker id="lfq-t" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0 0L6 3L0 6z" fill="#0a5a60" /></marker>
                     </defs>
-                    <rect x="22" y="54" width="72" height="40" rx="6" fill="#f8f5ec" stroke="#002535" stroke-width="2" />
-                    <rect x="150" y="54" width="72" height="40" rx="6" fill="#f8f5ec" stroke="#002535" stroke-width="2" />
-                    <rect x="278" y="54" width="72" height="40" rx="6" fill="#f8f5ec" stroke="#002535" stroke-width="2" />
-                    <line x1="94" y1="74" x2="146" y2="74" stroke="#002535" stroke-width="2" marker-end="url(#lfq-a)" />
-                    <line x1="222" y1="74" x2="274" y2="74" stroke="#002535" stroke-width="2" marker-end="url(#lfq-a)" />
-                    <line x1="350" y1="74" x2="378" y2="74" stroke="#002535" stroke-width="2" marker-end="url(#lfq-a)" />
-                    <text x="382" y="79" font-family="'IBM Plex Mono',monospace" font-size="13" fill="#002535">&#8709;</text>
-                    <text x="26" y="34" font-family="'IBM Plex Mono',monospace" font-size="12" font-weight="600" fill="#b5450b">HEAD</text>
-                    <line x1="40" y1="38" x2="46" y2="52" stroke="#b5450b" stroke-width="2" marker-end="url(#lfq-r)" />
-                    <text x="282" y="34" font-family="'IBM Plex Mono',monospace" font-size="12" font-weight="600" fill="#b5450b">TAIL</text>
-                    <line x1="300" y1="38" x2="306" y2="52" stroke="#b5450b" stroke-width="2" marker-end="url(#lfq-r)" />
-                    <path d="M340 96 q34 26 -6 34 q-40 8 -40 -18" fill="none" stroke="#0a5a60" stroke-width="2" stroke-dasharray="4 3" marker-end="url(#lfq-t)" />
-                    <text x="296" y="140" font-family="'IBM Plex Mono',monospace" font-size="11" fill="#0a5a60">CAS retry</text>
+                    <rect class="pop" style="animation-delay: 0.05s" x="22" y="54" width="72" height="40" rx="6" fill="#f8f5ec" stroke="#002535" stroke-width="2" />
+                    <rect class="pop" style="animation-delay: 0.13s" x="150" y="54" width="72" height="40" rx="6" fill="#f8f5ec" stroke="#002535" stroke-width="2" />
+                    <rect class="pop" style="animation-delay: 0.21s" x="278" y="54" width="72" height="40" rx="6" fill="#f8f5ec" stroke="#002535" stroke-width="2" />
+                    <line class="fade" style="animation-delay: 0.3s" x1="94" y1="74" x2="146" y2="74" stroke="#002535" stroke-width="2" marker-end="url(#lfq-a)" />
+                    <line class="fade" style="animation-delay: 0.36s" x1="222" y1="74" x2="274" y2="74" stroke="#002535" stroke-width="2" marker-end="url(#lfq-a)" />
+                    <line class="fade" style="animation-delay: 0.42s" x1="350" y1="74" x2="378" y2="74" stroke="#002535" stroke-width="2" marker-end="url(#lfq-a)" />
+                    <text class="fade" style="animation-delay: 0.48s" x="382" y="79" font-family="'IBM Plex Mono',monospace" font-size="13" fill="#002535">&#8709;</text>
+                    <text class="fade" style="animation-delay: 0.5s" x="26" y="34" font-family="'IBM Plex Mono',monospace" font-size="12" font-weight="600" fill="#b5450b">HEAD</text>
+                    <line class="fade" style="animation-delay: 0.5s" x1="40" y1="38" x2="46" y2="52" stroke="#b5450b" stroke-width="2" marker-end="url(#lfq-r)" />
+                    <text class="fade" style="animation-delay: 0.5s" x="282" y="34" font-family="'IBM Plex Mono',monospace" font-size="12" font-weight="600" fill="#b5450b">TAIL</text>
+                    <line class="fade" style="animation-delay: 0.5s" x1="300" y1="38" x2="306" y2="52" stroke="#b5450b" stroke-width="2" marker-end="url(#lfq-r)" />
+                    <path class="loop" d="M340 96 q34 26 -6 34 q-40 8 -40 -18" fill="none" stroke="#0a5a60" stroke-width="2" stroke-dasharray="4 3" marker-end="url(#lfq-t)" />
+                    <text class="fade" style="animation-delay: 0.58s" x="296" y="140" font-family="'IBM Plex Mono',monospace" font-size="11" fill="#0a5a60">CAS retry</text>
                   </svg>
                 </div>
                 <div class="card-body">
@@ -343,18 +344,18 @@
                 href="https://github.com/ashishaggrawal/Safety-Watchdog"
                 target="_blank"
                 rel="noopener"
-                class="project-card project-card--berry"
+                class="project-card project-card--berry reveal-fade"
               >
                 <span class="card-repo" aria-hidden="true"><svg><use href="#ico-github" /></svg></span>
                 <div class="card-thumb">
                   <svg viewBox="0 0 400 150" role="img" aria-label="Watchdog timing: heartbeat kicks stop, deadline missed, E-Stop asserted">
-                    <line x1="12" y1="110" x2="388" y2="110" stroke="#002535" stroke-width="2" />
-                    <polyline points="12,92 40,92 40,48 56,48 56,92 90,92 90,48 106,48 106,92 140,92 140,48 156,48 156,92 190,92 190,48 206,48 206,92 226,92" fill="none" stroke="#0a5a60" stroke-width="2.5" stroke-linejoin="round" />
-                    <line x1="226" y1="92" x2="300" y2="92" stroke="#002535" stroke-width="2.5" stroke-dasharray="3 4" />
-                    <line x1="300" y1="24" x2="300" y2="118" stroke="#d98a1f" stroke-width="2" stroke-dasharray="5 3" />
-                    <text x="300" y="18" font-family="'IBM Plex Mono',monospace" font-size="10" fill="#a9701a" text-anchor="middle">DEADLINE</text>
-                    <line x1="332" y1="24" x2="332" y2="118" stroke="#8f201c" stroke-width="3" />
-                    <text x="388" y="70" font-family="'IBM Plex Mono',monospace" font-size="11" font-weight="600" fill="#8f201c" text-anchor="end">E-STOP</text>
+                    <line class="d" pathLength="1" x1="12" y1="110" x2="388" y2="110" stroke="#002535" stroke-width="2" />
+                    <polyline class="d" pathLength="1" style="animation-delay: 0.2s; animation-duration: 1.3s" points="12,92 40,92 40,48 56,48 56,92 90,92 90,48 106,48 106,92 140,92 140,48 156,48 156,92 190,92 190,48 206,48 206,92 226,92" fill="none" stroke="#0a5a60" stroke-width="2.5" stroke-linejoin="round" />
+                    <line class="fade" style="animation-delay: 1.4s" x1="226" y1="92" x2="300" y2="92" stroke="#002535" stroke-width="2.5" stroke-dasharray="3 4" />
+                    <line class="fade" style="animation-delay: 1.5s" x1="300" y1="24" x2="300" y2="118" stroke="#d98a1f" stroke-width="2" stroke-dasharray="5 3" />
+                    <text class="fade" style="animation-delay: 1.5s" x="300" y="18" font-family="'IBM Plex Mono',monospace" font-size="10" fill="#a9701a" text-anchor="middle">DEADLINE</text>
+                    <line class="d" pathLength="1" style="animation-delay: 1.72s; animation-duration: 0.32s" x1="332" y1="24" x2="332" y2="118" stroke="#8f201c" stroke-width="3" />
+                    <text class="fade" style="animation-delay: 1.9s" x="388" y="70" font-family="'IBM Plex Mono',monospace" font-size="11" font-weight="600" fill="#8f201c" text-anchor="end">E-STOP</text>
                   </svg>
                 </div>
                 <div class="card-body">
@@ -374,27 +375,27 @@
                 href="https://github.com/ashishaggrawal/Fraud-Detection"
                 target="_blank"
                 rel="noopener"
-                class="project-card project-card--gold"
+                class="project-card project-card--gold reveal-fade"
               >
                 <span class="card-repo" aria-hidden="true"><svg><use href="#ico-github" /></svg></span>
                 <div class="card-thumb">
                   <svg viewBox="0 0 400 152" role="img" aria-label="Anomaly detection: a normal cluster, two flagged outliers, and a risk score near the top of the scale">
-                    <g fill="#002535">
+                    <g class="fade" style="animation-delay: 0.1s" fill="#002535">
                       <circle cx="60" cy="66" r="3" /><circle cx="76" cy="56" r="3" /><circle cx="88" cy="74" r="3" />
                       <circle cx="98" cy="62" r="3" /><circle cx="70" cy="82" r="3" /><circle cx="108" cy="70" r="3" />
                       <circle cx="84" cy="66" r="3" /><circle cx="54" cy="72" r="3" /><circle cx="94" cy="86" r="3" />
                       <circle cx="118" cy="58" r="3" /><circle cx="66" cy="60" r="3" /><circle cx="102" cy="78" r="3" />
                     </g>
-                    <circle cx="250" cy="34" r="4" fill="#8f201c" />
-                    <circle cx="250" cy="34" r="12" fill="none" stroke="#b5450b" stroke-width="2" />
-                    <circle cx="312" cy="86" r="4" fill="#8f201c" />
-                    <circle cx="312" cy="86" r="12" fill="none" stroke="#b5450b" stroke-width="2" />
-                    <line x1="24" y1="104" x2="376" y2="104" stroke="#002535" stroke-width="2" />
-                    <rect x="24" y="120" width="352" height="12" fill="#efe6d2" stroke="#002535" stroke-width="2" />
-                    <rect x="24" y="120" width="286" height="12" fill="#0a5a60" />
-                    <polygon points="310,116 316,107 304,107" fill="#8f201c" />
-                    <text x="24" y="147" font-family="'IBM Plex Mono',monospace" font-size="10" fill="#002535">RISK 0</text>
-                    <text x="376" y="147" font-family="'IBM Plex Mono',monospace" font-size="10" fill="#002535" text-anchor="end">100</text>
+                    <line class="d" pathLength="1" style="animation-delay: 0.15s" x1="24" y1="104" x2="376" y2="104" stroke="#002535" stroke-width="2" />
+                    <circle class="pop" style="animation-delay: 0.35s" cx="250" cy="34" r="4" fill="#8f201c" />
+                    <circle class="d" pathLength="1" style="animation-delay: 0.42s" cx="250" cy="34" r="12" fill="none" stroke="#b5450b" stroke-width="2" />
+                    <circle class="pop" style="animation-delay: 0.52s" cx="312" cy="86" r="4" fill="#8f201c" />
+                    <circle class="d" pathLength="1" style="animation-delay: 0.59s" cx="312" cy="86" r="12" fill="none" stroke="#b5450b" stroke-width="2" />
+                    <rect class="fade" style="animation-delay: 0.5s" x="24" y="120" width="352" height="12" fill="#efe6d2" stroke="#002535" stroke-width="2" />
+                    <rect class="g gl" style="animation-delay: 0.65s; animation-duration: 0.7s" x="24" y="120" width="286" height="12" fill="#0a5a60" />
+                    <polygon class="pop" style="animation-delay: 1.3s" points="310,116 316,107 304,107" fill="#8f201c" />
+                    <text class="fade" style="animation-delay: 0.85s" x="24" y="147" font-family="'IBM Plex Mono',monospace" font-size="10" fill="#002535">RISK 0</text>
+                    <text class="fade" style="animation-delay: 0.85s" x="376" y="147" font-family="'IBM Plex Mono',monospace" font-size="10" fill="#002535" text-anchor="end">100</text>
                   </svg>
                 </div>
                 <div class="card-body">
@@ -413,11 +414,11 @@
           </section>
 
           <section id="experience" class="experience-section">
-            <div class="section-header">
+            <div class="section-header reveal">
               <h2 class="section-title">Experience Timeline</h2>
             </div>
 
-            <div class="timeline-item">
+            <div class="timeline-item reveal">
               <div class="role">Student — Systems Programming Focus</div>
               <div class="company">Trent University</div>
               <span class="date">2023 – Present</span>
@@ -427,7 +428,7 @@
               </p>
             </div>
 
-            <div class="timeline-item">
+            <div class="timeline-item reveal">
               <div class="role">Operational Leader</div>
               <div class="company">Amazon</div>
               <span class="date">3 years</span>
@@ -437,7 +438,7 @@
               </p>
             </div>
 
-            <div class="timeline-item">
+            <div class="timeline-item reveal">
               <div class="role">Various Professional Roles</div>
               <div class="company">Tech &amp; Operations</div>
               <span class="date">Earlier career</span>
@@ -449,10 +450,10 @@
           </section>
 
           <section id="diary" class="diary-section">
-            <div class="section-header">
+            <div class="section-header reveal">
               <h2 class="section-title">Technical Log</h2>
             </div>
-            <ul class="diary-list horizontal-diary">
+            <ul class="diary-list horizontal-diary reveal-stagger">
               <!-- DIARY_CARDS:START -->
               <li>
                 <time class="diary-date" datetime="2026-09-17">Sep 17, 2026</time>
@@ -482,13 +483,13 @@
               <!-- DIARY_CARDS:END -->
             </ul>
 
-            <div class="view-archive-row">
+            <div class="view-archive-row reveal">
               <a href="diary.html" class="view-archive-link">View All Logs →</a>
             </div>
           </section>
 
           <section id="contact" class="contact-section">
-            <div class="section-header">
+            <div class="section-header reveal">
               <h2 class="section-title">Contact</h2>
             </div>
             <p style="margin-bottom: 22px; color: var(--text-muted)">
@@ -523,14 +524,20 @@
     <script>
       (function () {
         var root = document.documentElement;
+
+        /* theme toggle + brief colour cross-fade */
         var btn = document.querySelector(".theme-toggle");
         if (btn)
           btn.addEventListener("click", function () {
             var dark = root.getAttribute("data-theme") !== "dark";
+            root.classList.add("theme-anim");
             root.setAttribute("data-theme", dark ? "dark" : "light");
             try {
               localStorage.setItem("theme", dark ? "dark" : "light");
             } catch (e) {}
+            setTimeout(function () {
+              root.classList.remove("theme-anim");
+            }, 420);
           });
         try {
           matchMedia("(prefers-color-scheme: dark)").addEventListener(
@@ -541,6 +548,31 @@
             }
           );
         } catch (e) {}
+
+        /* scroll-reveal for sections, tiles, cards and schematics */
+        var targets = document.querySelectorAll(
+          ".reveal, .reveal-stagger, .reveal-fade"
+        );
+        if (!("IntersectionObserver" in window)) {
+          targets.forEach(function (el) {
+            el.classList.add("in-view");
+          });
+          return;
+        }
+        var io = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (e) {
+              if (e.isIntersecting) {
+                e.target.classList.add("in-view");
+                io.unobserve(e.target);
+              }
+            });
+          },
+          { threshold: 0.15, rootMargin: "0px 0px -6% 0px" }
+        );
+        targets.forEach(function (el) {
+          io.observe(el);
+        });
       })();
     </script>
   </body>

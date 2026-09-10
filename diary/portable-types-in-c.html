@@ -36,6 +36,7 @@
     </script>
     <script>
       (function () {
+        document.documentElement.classList.add("js");
         try {
           var s = localStorage.getItem("theme");
           var d = s
@@ -130,7 +131,7 @@
 <p>These details might seem small, but in a low-latency environment, they're the difference between code that works and code that's robust.</p>
         </div>
 
-        <nav class="post-nav" aria-label="More posts">
+        <nav class="post-nav reveal" aria-label="More posts">
           <a href="why-a-plain-pointer-broke-my-lock-free-queue.html" rel="prev"><span>← Newer</span><strong>Why a 'plain' pointer broke my lock-free queue</strong></a>
           <a href="powershell-github-cleanup.html" rel="next"><span>Older →</span><strong>5 lines of PowerShell to clean up your GitHub portfolio</strong></a>
         </nav>
@@ -155,10 +156,14 @@
         if (btn)
           btn.addEventListener("click", function () {
             var dark = root.getAttribute("data-theme") !== "dark";
+            root.classList.add("theme-anim");
             root.setAttribute("data-theme", dark ? "dark" : "light");
             try {
               localStorage.setItem("theme", dark ? "dark" : "light");
             } catch (e) {}
+            setTimeout(function () {
+              root.classList.remove("theme-anim");
+            }, 420);
           });
         try {
           matchMedia("(prefers-color-scheme: dark)").addEventListener(
@@ -169,6 +174,28 @@
             }
           );
         } catch (e) {}
+
+        var targets = document.querySelectorAll(".reveal, .reveal-stagger");
+        if (!("IntersectionObserver" in window)) {
+          targets.forEach(function (el) {
+            el.classList.add("in-view");
+          });
+          return;
+        }
+        var io = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (e) {
+              if (e.isIntersecting) {
+                e.target.classList.add("in-view");
+                io.unobserve(e.target);
+              }
+            });
+          },
+          { threshold: 0.1, rootMargin: "0px 0px -5% 0px" }
+        );
+        targets.forEach(function (el) {
+          io.observe(el);
+        });
       })();
     </script>
   </body>
