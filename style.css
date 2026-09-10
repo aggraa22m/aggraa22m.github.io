@@ -535,8 +535,35 @@ section + section,
 /* --- 9. SKILLS --- */
 .skills-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(112px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(108px, 1fr));
   gap: 14px;
+  max-width: 720px;
+}
+
+/* the emphasised "Core" row — larger cards, four across (wide screens only;
+   on narrow screens it falls back to the same compact grid as the rest) */
+@media (min-width: 901px) {
+  .skills-grid--core {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+  .skill-card--core {
+    gap: 12px;
+    padding: 20px 10px;
+    border-bottom-width: 5px;
+    box-shadow: var(--shadow);
+  }
+  .skill-card--core .skill-icon-badge {
+    width: 60px;
+    height: 60px;
+  }
+  .skill-card--core .skill-icon {
+    width: 34px;
+    height: 34px;
+  }
+  .skill-card--core .skill-label {
+    font-size: 15px;
+  }
 }
 
 .skill-card {
@@ -556,6 +583,24 @@ section + section,
 .skill-card:hover {
   transform: translate(-2px, -2px);
   box-shadow: var(--shadow);
+}
+
+.skill-card--core {
+  gap: 12px;
+  padding: 20px 10px;
+  border-bottom-width: 5px;
+  box-shadow: var(--shadow);
+}
+.skill-card--core .skill-icon-badge {
+  width: 60px;
+  height: 60px;
+}
+.skill-card--core .skill-icon {
+  width: 34px;
+  height: 34px;
+}
+.skill-card--core .skill-label {
+  font-size: 15px;
 }
 
 .skill-icon-badge {
@@ -581,7 +626,26 @@ section + section,
   color: var(--text);
   text-align: center;
   line-height: 1.3;
-  overflow-wrap: break-word;
+  white-space: nowrap;
+}
+
+/* Focus areas, grouped into a few labelled clusters */
+.focus-groups {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.focus-group-label {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: var(--text-muted);
+  margin-bottom: 9px;
+}
+.focus-group-label::before {
+  content: "// ";
+  color: var(--accent);
 }
 
 .skill-chip-row {
@@ -1129,6 +1193,7 @@ footer {
 
   .skills-grid {
     grid-template-columns: repeat(auto-fill, minmax(96px, 1fr));
+    max-width: none;
   }
   .projects-grid {
     grid-template-columns: 1fr;
