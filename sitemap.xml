@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://ashishaggrawal.github.io/</loc><lastmod>2026-09-17</lastmod></url>
+  <url><loc>https://ashishaggrawal.github.io/diary.html</loc><lastmod>2026-09-17</lastmod></url>
+  <url><loc>https://ashishaggrawal.github.io/diary/endianness-and-the-raw-pointer-cast.html</loc><lastmod>2026-09-17</lastmod></url>
+  <url><loc>https://ashishaggrawal.github.io/diary/why-abs-int-min-is-negative.html</loc><lastmod>2026-09-10</lastmod></url>
+  <url><loc>https://ashishaggrawal.github.io/diary/overflow-check-may-not-survive-o2.html</loc><lastmod>2026-08-13</lastmod></url>
+  <url><loc>https://ashishaggrawal.github.io/diary/floating-point-is-not-associative.html</loc><lastmod>2026-08-10</lastmod></url>
+  <url><loc>https://ashishaggrawal.github.io/diary/why-a-plain-pointer-broke-my-lock-free-queue.html</loc><lastmod>2025-12-31</lastmod></url>
+  <url><loc>https://ashishaggrawal.github.io/diary/portable-types-in-c.html</loc><lastmod>2025-12-26</lastmod></url>
+  <url><loc>https://ashishaggrawal.github.io/diary/powershell-github-cleanup.html</loc><lastmod>2025-12-12</lastmod></url>
+</urlset>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ashish Aggrawal — Technical Log</title>
+    <link>https://ashishaggrawal.github.io/diary.html</link>
+    <atom:link href="https://ashishaggrawal.github.io/feed.xml" rel="self" type="application/rss+xml" />
+    <description>Notes on systems programming, C/C++, kernels and low-level performance.</description>
+    <language>en</language>
+    <lastBuildDate>Thu, 17 Sep 2026 12:00:00 GMT</lastBuildDate>
+    <item>
+      <title>Endianness and the raw pointer cast trap</title>
+      <link>https://ashishaggrawal.github.io/diary/endianness-and-the-raw-pointer-cast.html</link>
+      <guid isPermaLink="true">https://ashishaggrawal.github.io/diary/endianness-and-the-raw-pointer-cast.html</guid>
+      <pubDate>Thu, 17 Sep 2026 12:00:00 GMT</pubDate>
+      <description>Why casting a byte buffer straight to uint32_t* fails in production — byte order, alignment, strict aliasing — and the memcpy + ntohl fix.</description>
+    </item>
+    <item>
+      <title>Why abs(INT_MIN) returns a negative number</title>
+      <link>https://ashishaggrawal.github.io/diary/why-abs-int-min-is-negative.html</link>
+      <guid isPermaLink="true">https://ashishaggrawal.github.io/diary/why-abs-int-min-is-negative.html</guid>
+      <pubDate>Thu, 10 Sep 2026 12:00:00 GMT</pubDate>
+      <description>Two's complement is asymmetric — TMin has no positive counterpart, and negating it is undefined behavior.</description>
+    </item>
+    <item>
+      <title>Your signed-overflow check may not survive -O2</title>
+      <link>https://ashishaggrawal.github.io/diary/overflow-check-may-not-survive-o2.html</link>
+      <guid isPermaLink="true">https://ashishaggrawal.github.io/diary/overflow-check-may-not-survive-o2.html</guid>
+      <pubDate>Thu, 13 Aug 2026 12:00:00 GMT</pubDate>
+      <description>GCC and Clang can legally delete a post-addition signed-overflow check. Test the operands before the operation.</description>
+    </item>
+    <item>
+      <title>Floating-point addition is not associative</title>
+      <link>https://ashishaggrawal.github.io/diary/floating-point-is-not-associative.html</link>
+      <guid isPermaLink="true">https://ashishaggrawal.github.io/diary/floating-point-is-not-associative.html</guid>
+      <pubDate>Mon, 10 Aug 2026 12:00:00 GMT</pubDate>
+      <description>Finite precision breaks (a + b) - b, and that's why a compiler can't freely reorder or vectorize float sums.</description>
+    </item>
+    <item>
+      <title>Why a 'plain' pointer broke my lock-free queue</title>
+      <link>https://ashishaggrawal.github.io/diary/why-a-plain-pointer-broke-my-lock-free-queue.html</link>
+      <guid isPermaLink="true">https://ashishaggrawal.github.io/diary/why-a-plain-pointer-broke-my-lock-free-queue.html</guid>
+      <pubDate>Wed, 31 Dec 2025 12:00:00 GMT</pubDate>
+      <description>Exploring atomic operations and memory ordering.</description>
+    </item>
+    <item>
+      <title>The hidden cost of choosing the wrong variable type</title>
+      <link>https://ashishaggrawal.github.io/diary/portable-types-in-c.html</link>
+      <guid isPermaLink="true">https://ashishaggrawal.github.io/diary/portable-types-in-c.html</guid>
+      <pubDate>Fri, 26 Dec 2025 12:00:00 GMT</pubDate>
+      <description>Exploring portable types and why int isn't always the right choice.</description>
+    </item>
+    <item>
+      <title>5 lines of PowerShell to clean up your GitHub portfolio</title>
+      <link>https://ashishaggrawal.github.io/diary/powershell-github-cleanup.html</link>
+      <guid isPermaLink="true">https://ashishaggrawal.github.io/diary/powershell-github-cleanup.html</guid>
+      <pubDate>Fri, 12 Dec 2025 12:00:00 GMT</pubDate>
+      <description>A small automation that saved a lot of clicking.</description>
+    </item>
+  </channel>
+</rss>

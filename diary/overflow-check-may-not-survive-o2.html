@@ -3,18 +3,18 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>5 lines of PowerShell to clean up your GitHub portfolio — Ashish Aggrawal</title>
-    <meta name="description" content="A small automation that saved a lot of clicking." />
+    <title>Your signed-overflow check may not survive -O2 — Ashish Aggrawal</title>
+    <meta name="description" content="GCC and Clang can legally delete a post-addition signed-overflow check. Test the operands before the operation." />
     <meta name="author" content="Ashish Aggrawal" />
-    <link rel="canonical" href="https://ashishaggrawal.github.io/diary/powershell-github-cleanup.html" />
+    <link rel="canonical" href="https://ashishaggrawal.github.io/diary/overflow-check-may-not-survive-o2.html" />
     <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%3E%3Crect%20width='100'%20height='100'%20rx='18'%20fill='%23002535'/%3E%3Ctext%20x='50'%20y='54'%20font-family='Georgia,serif'%20font-size='62'%20fill='%23e8dfc8'%20text-anchor='middle'%20dominant-baseline='central'%3EA%3C/text%3E%3C/svg%3E" />
     <link rel="alternate" type="application/rss+xml" title="Ashish Aggrawal — Technical Log" href="https://ashishaggrawal.github.io/feed.xml" />
     <meta name="theme-color" content="#e8dfc8" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#131e26" media="(prefers-color-scheme: dark)" />
     <meta property="og:type" content="article" />
-    <meta property="og:title" content="5 lines of PowerShell to clean up your GitHub portfolio" />
-    <meta property="og:description" content="A small automation that saved a lot of clicking." />
-    <meta property="og:url" content="https://ashishaggrawal.github.io/diary/powershell-github-cleanup.html" />
+    <meta property="og:title" content="Your signed-overflow check may not survive -O2" />
+    <meta property="og:description" content="GCC and Clang can legally delete a post-addition signed-overflow check. Test the operands before the operation." />
+    <meta property="og:url" content="https://ashishaggrawal.github.io/diary/overflow-check-may-not-survive-o2.html" />
     <meta property="og:image" content="https://ashishaggrawal.github.io/Resources/og-image.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
@@ -24,14 +24,14 @@
       {
         "@context": "https://schema.org",
         "@type": "BlogPosting",
-        "headline": "5 lines of PowerShell to clean up your GitHub portfolio",
-        "datePublished": "2025-12-12",
+        "headline": "Your signed-overflow check may not survive -O2",
+        "datePublished": "2026-08-13",
         "author": {
           "@type": "Person",
           "name": "Ashish Aggrawal"
         },
-        "url": "https://ashishaggrawal.github.io/diary/powershell-github-cleanup.html",
-        "description": "A small automation that saved a lot of clicking."
+        "url": "https://ashishaggrawal.github.io/diary/overflow-check-may-not-survive-o2.html",
+        "description": "GCC and Clang can legally delete a post-addition signed-overflow check. Test the operands before the operation."
       }
     </script>
     <script>
@@ -85,35 +85,44 @@
       <article style="max-width: 800px; margin: 0 auto;">
         <div class="page-intro">
           <a href="../diary.html" class="btn btn-secondary" style="font-size: 16px; padding: 10px 20px;">&larr; Back to Technical Log</a>
-          <h1 class="section-title" style="margin-top: 20px;">5 lines of PowerShell to clean up your GitHub portfolio</h1>
-          <time class="diary-date" datetime="2025-12-12" style="font-size: 15px;">Dec 12, 2025</time>
+          <h1 class="section-title" style="margin-top: 20px;">Your signed-overflow check may not survive -O2</h1>
+          <time class="diary-date" datetime="2026-08-13" style="font-size: 15px;">Aug 13, 2026</time>
         </div>
 
         <div class="post-content">
-<p>I spent some time cleaning up my old repositories on GitHub. Deleting them manually through the website was taking too long, so I looked into the GitHub CLI (<code>gh</code>) instead.</p>
-<h4>The problem</h4>
-<p>The standard <code>gh</code> login doesn't give you delete rights by default. You have to request that scope explicitly before the CLI will let you delete anything.</p>
-<h4>Step 1: Unlock permissions</h4>
-<pre><code class="language-powershell">gh auth refresh -h github.com -s delete_repo</code></pre>
-
-<p>This re-authenticates your session with the <code>delete_repo</code> scope added, which isn't granted by default for safety reasons.</p>
-<h4>Step 2: The deletion loop</h4>
-<pre><code class="language-powershell">gh repo list --limit <span class="tok-num">100</span> --json name --jq <span class="tok-string">'.[].name'</span> | <span class="tok-kw">ForEach</span>-Object {
-    <span class="tok-var">$resp</span> = <span class="tok-fn">Read-Host</span> <span class="tok-string">"DELETE '$_'? (y/n)"</span>
-    <span class="tok-kw">if</span> (<span class="tok-var">$resp</span> -eq <span class="tok-string">'y'</span>) {
-        gh repo delete <span class="tok-var">$_</span> --confirm
+<p>You write an overflow check in C. It looks correct, compiles clean, and passes every test.</p>
+<pre><code class="language-c"><span class="tok-kw">int</span> <span class="tok-fn">check_overflow</span>(<span class="tok-kw">int</span> x, <span class="tok-kw">int</span> y) {
+    <span class="tok-kw">int</span> sum = x + y;
+    <span class="tok-kw">if</span> (x &gt; <span class="tok-num">0</span> &amp;&amp; y &gt; <span class="tok-num">0</span> &amp;&amp; sum &lt; <span class="tok-num">0</span>) {
+        <span class="tok-kw">return</span> <span class="tok-num">1</span>; <span class="tok-comment">// Overflowed!</span>
     }
+    <span class="tok-kw">return</span> <span class="tok-num">0</span>;
 }</code></pre>
-
-<p>This fetches your repository names, asks for a <code>y/n</code> confirmation on each one individually, and only deletes the ones you approve.</p>
-<h4>Why it matters</h4>
-<p>It's a small script, but it's a good example of a habit worth building: when a manual task starts feeling repetitive, it's usually a sign there's a faster, safer way to do it. The confirmation prompt on every repo also matters — automating a destructive action without a safeguard is how you accidentally delete something you meant to keep.</p>
-<p>Use with caution — this genuinely deletes repositories, with no undo.</p>
+<p>You ship it, confident it's protecting your code from a classic integer overflow bug.</p>
+<p>Here's what you don't know: compile this under GCC or Clang with <code>-O2</code> or <code>-O3</code>, and the compiler is allowed to delete the entire <code>if</code> block. Not because it's buggy — because the C standard says it can.</p>
+<h3>The reasoning</h3>
+<ul><li>You wrote <code>x &gt; 0</code> and <code>y &gt; 0</code>.</li><li>In pure math, two positive numbers always sum to something positive.</li><li>Signed integer overflow is Undefined Behavior, and the standard says the compiler may assume UB never happens in valid code.</li><li>So <code>sum &lt; 0</code> is, by definition, logically impossible. Dead code. Deleted.</li></ul>
+<p>There is no warning and no error. The binary just silently ships without the check you wrote, tested, and trusted. This isn't a rare compiler edge case — it's standard, expected <code>-O2</code> behavior on GCC and Clang today. If you're validating untrusted input with a post-addition check like this, the validation may not exist in your release build at all.</p>
+<h3>The fix: check before the operation</h3>
+<p>Stop trusting arithmetic that has already happened. Check before it runs:</p>
+<pre><code class="language-c"><span class="tok-kw">int</span> <span class="tok-fn">sadd_ok</span>(<span class="tok-kw">int</span> x, <span class="tok-kw">int</span> y) {
+    <span class="tok-kw">if</span> (x &gt; <span class="tok-num">0</span> &amp;&amp; y &gt; INT_MAX - x) <span class="tok-kw">return</span> <span class="tok-num">0</span>; <span class="tok-comment">// would overflow</span>
+    <span class="tok-kw">if</span> (x &lt; <span class="tok-num">0</span> &amp;&amp; y &lt; INT_MIN - x) <span class="tok-kw">return</span> <span class="tok-num">0</span>; <span class="tok-comment">// would underflow</span>
+    <span class="tok-kw">return</span> <span class="tok-num">1</span>;
+}</code></pre>
+<p>This works because the check itself never triggers UB — it only ever compares values that are already valid, before the risky addition runs.</p>
+<p>Or skip the manual bounds math and use a compiler built-in, which compiles directly to the hardware's carry/overflow flag:</p>
+<pre><code class="language-c"><span class="tok-kw">if</span> (<span class="tok-fn">__builtin_add_overflow</span>(x, y, &amp;result)) {
+    <span class="tok-comment">// handle overflow</span>
+}</code></pre>
+<p>Unsigned integers don't have this trap: the standard guarantees they wrap modulo <code>2^w</code>, so a post-addition check like <code>sum &gt;= x</code> is legal and safe there. It's specifically signed overflow that's UB.</p>
+<h3>Takeaway</h3>
+<p>In C, a check placed on the wrong side of the operation isn't a weaker check. It's not a check at all — and the compiler will prove that to you, silently, in production.</p>
         </div>
 
         <nav class="post-nav" aria-label="More posts">
-          <a href="portable-types-in-c.html" rel="prev"><span>← Newer</span><strong>The hidden cost of choosing the wrong variable type</strong></a>
-          <span></span>
+          <a href="why-abs-int-min-is-negative.html" rel="prev"><span>← Newer</span><strong>Why abs(INT_MIN) returns a negative number</strong></a>
+          <a href="floating-point-is-not-associative.html" rel="next"><span>Older →</span><strong>Floating-point addition is not associative</strong></a>
         </nav>
       </article>
     </main>

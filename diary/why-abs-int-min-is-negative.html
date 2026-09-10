@@ -3,18 +3,18 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>5 lines of PowerShell to clean up your GitHub portfolio — Ashish Aggrawal</title>
-    <meta name="description" content="A small automation that saved a lot of clicking." />
+    <title>Why abs(INT_MIN) returns a negative number — Ashish Aggrawal</title>
+    <meta name="description" content="Two's complement is asymmetric — TMin has no positive counterpart, and negating it is undefined behavior." />
     <meta name="author" content="Ashish Aggrawal" />
-    <link rel="canonical" href="https://ashishaggrawal.github.io/diary/powershell-github-cleanup.html" />
+    <link rel="canonical" href="https://ashishaggrawal.github.io/diary/why-abs-int-min-is-negative.html" />
     <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%3E%3Crect%20width='100'%20height='100'%20rx='18'%20fill='%23002535'/%3E%3Ctext%20x='50'%20y='54'%20font-family='Georgia,serif'%20font-size='62'%20fill='%23e8dfc8'%20text-anchor='middle'%20dominant-baseline='central'%3EA%3C/text%3E%3C/svg%3E" />
     <link rel="alternate" type="application/rss+xml" title="Ashish Aggrawal — Technical Log" href="https://ashishaggrawal.github.io/feed.xml" />
     <meta name="theme-color" content="#e8dfc8" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#131e26" media="(prefers-color-scheme: dark)" />
     <meta property="og:type" content="article" />
-    <meta property="og:title" content="5 lines of PowerShell to clean up your GitHub portfolio" />
-    <meta property="og:description" content="A small automation that saved a lot of clicking." />
-    <meta property="og:url" content="https://ashishaggrawal.github.io/diary/powershell-github-cleanup.html" />
+    <meta property="og:title" content="Why abs(INT_MIN) returns a negative number" />
+    <meta property="og:description" content="Two's complement is asymmetric — TMin has no positive counterpart, and negating it is undefined behavior." />
+    <meta property="og:url" content="https://ashishaggrawal.github.io/diary/why-abs-int-min-is-negative.html" />
     <meta property="og:image" content="https://ashishaggrawal.github.io/Resources/og-image.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
@@ -24,14 +24,14 @@
       {
         "@context": "https://schema.org",
         "@type": "BlogPosting",
-        "headline": "5 lines of PowerShell to clean up your GitHub portfolio",
-        "datePublished": "2025-12-12",
+        "headline": "Why abs(INT_MIN) returns a negative number",
+        "datePublished": "2026-09-10",
         "author": {
           "@type": "Person",
           "name": "Ashish Aggrawal"
         },
-        "url": "https://ashishaggrawal.github.io/diary/powershell-github-cleanup.html",
-        "description": "A small automation that saved a lot of clicking."
+        "url": "https://ashishaggrawal.github.io/diary/why-abs-int-min-is-negative.html",
+        "description": "Two's complement is asymmetric — TMin has no positive counterpart, and negating it is undefined behavior."
       }
     </script>
     <script>
@@ -85,35 +85,39 @@
       <article style="max-width: 800px; margin: 0 auto;">
         <div class="page-intro">
           <a href="../diary.html" class="btn btn-secondary" style="font-size: 16px; padding: 10px 20px;">&larr; Back to Technical Log</a>
-          <h1 class="section-title" style="margin-top: 20px;">5 lines of PowerShell to clean up your GitHub portfolio</h1>
-          <time class="diary-date" datetime="2025-12-12" style="font-size: 15px;">Dec 12, 2025</time>
+          <h1 class="section-title" style="margin-top: 20px;">Why abs(INT_MIN) returns a negative number</h1>
+          <time class="diary-date" datetime="2026-09-10" style="font-size: 15px;">Sep 10, 2026</time>
         </div>
 
         <div class="post-content">
-<p>I spent some time cleaning up my old repositories on GitHub. Deleting them manually through the website was taking too long, so I looked into the GitHub CLI (<code>gh</code>) instead.</p>
-<h4>The problem</h4>
-<p>The standard <code>gh</code> login doesn't give you delete rights by default. You have to request that scope explicitly before the CLI will let you delete anything.</p>
-<h4>Step 1: Unlock permissions</h4>
-<pre><code class="language-powershell">gh auth refresh -h github.com -s delete_repo</code></pre>
+<p>What is the absolute value of the smallest 32-bit integer? If your answer is 2,147,483,648, your program just triggered Undefined Behavior — or returned a negative number.</p>
+<pre><code class="language-c"><span class="tok-kw">int</span> <span class="tok-fn">safe_abs</span>(<span class="tok-kw">int</span> x) {
+    <span class="tok-kw">if</span> (x &lt; <span class="tok-num">0</span>) <span class="tok-kw">return</span> -x;
+    <span class="tok-kw">return</span> x;
+}
 
-<p>This re-authenticates your session with the <code>delete_repo</code> scope added, which isn't granted by default for safety reasons.</p>
-<h4>Step 2: The deletion loop</h4>
-<pre><code class="language-powershell">gh repo list --limit <span class="tok-num">100</span> --json name --jq <span class="tok-string">'.[].name'</span> | <span class="tok-kw">ForEach</span>-Object {
-    <span class="tok-var">$resp</span> = <span class="tok-fn">Read-Host</span> <span class="tok-string">"DELETE '$_'? (y/n)"</span>
-    <span class="tok-kw">if</span> (<span class="tok-var">$resp</span> -eq <span class="tok-string">'y'</span>) {
-        gh repo delete <span class="tok-var">$_</span> --confirm
-    }
-}</code></pre>
-
-<p>This fetches your repository names, asks for a <code>y/n</code> confirmation on each one individually, and only deletes the ones you approve.</p>
-<h4>Why it matters</h4>
-<p>It's a small script, but it's a good example of a habit worth building: when a manual task starts feeling repetitive, it's usually a sign there's a faster, safer way to do it. The confirmation prompt on every repo also matters — automating a destructive action without a safeguard is how you accidentally delete something you meant to keep.</p>
-<p>Use with caution — this genuinely deletes repositories, with no undo.</p>
+<span class="tok-fn">printf</span>(<span class="tok-string">"%d\n"</span>, <span class="tok-fn">safe_abs</span>(INT_MIN)); <span class="tok-comment">// Prints: -2147483648</span></code></pre>
+<p>This bug comes straight out of the math of two's complement asymmetry.</p>
+<h3>The range imbalance</h3>
+<p>For a <code>w</code>-bit signed integer, the representable range is <code>-2^(w-1)</code> to <code>2^(w-1) - 1</code>. For 32 bits:</p>
+<ul><li><code>TMin</code> (smallest value) = -2,147,483,648</li><li><code>TMax</code> (largest value) = +2,147,483,647</li></ul>
+<p>Because zero uses one of the non-negative bit patterns, there is one more negative number than positive number. <code>TMin</code> has no positive counterpart.</p>
+<h3>Why -TMin == TMin</h3>
+<p>In hardware, negating a two's complement integer isn't a sign-bit flip. It follows the identity <code>-x = ~x + 1</code> — bitwise NOT, then add one. Watch what happens when we negate 32-bit <code>TMin</code> (<code>0x80000000</code>):</p>
+<pre><code class="language-text">  TMin  = 1000 0000 0000 0000 0000 0000 0000 0000
+~ TMin  = 0111 1111 1111 1111 1111 1111 1111 1111   (this is TMax)
+    + 1 = 1000 0000 0000 0000 0000 0000 0000 0000   (back to TMin)</code></pre>
+<p>The carry ripples all the way across and wraps the number straight back to <code>TMin</code>.</p>
+<h3>The practical impact</h3>
+<p>In the C standard, negating <code>INT_MIN</code> is signed integer overflow — Undefined Behavior. On standard x86-64 hardware, the standard library's <code>abs(INT_MIN)</code> typically just returns <code>INT_MIN</code>: a negative result from an absolute-value function.</p>
+<p>Naive validation like <code>if (abs(id) &gt; MAX_LIMIT)</code> can be bypassed entirely by an attacker who supplies <code>INT_MIN</code>.</p>
+<h3>Takeaway</h3>
+<p>Never assume the set of negative integers mirrors the positive ones. At the hardware boundary, the edge cases lurk at the extremes.</p>
         </div>
 
         <nav class="post-nav" aria-label="More posts">
-          <a href="portable-types-in-c.html" rel="prev"><span>← Newer</span><strong>The hidden cost of choosing the wrong variable type</strong></a>
-          <span></span>
+          <a href="endianness-and-the-raw-pointer-cast.html" rel="prev"><span>← Newer</span><strong>Endianness and the raw pointer cast trap</strong></a>
+          <a href="overflow-check-may-not-survive-o2.html" rel="next"><span>Older →</span><strong>Your signed-overflow check may not survive -O2</strong></a>
         </nav>
       </article>
     </main>

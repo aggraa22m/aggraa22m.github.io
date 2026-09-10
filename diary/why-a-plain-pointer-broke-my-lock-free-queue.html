@@ -3,35 +3,90 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ashish Aggrawal - Why a 'plain' pointer broke my lock-free queue</title>
+    <title>Why a 'plain' pointer broke my lock-free queue — Ashish Aggrawal</title>
+    <meta name="description" content="Exploring atomic operations and memory ordering." />
+    <meta name="author" content="Ashish Aggrawal" />
+    <link rel="canonical" href="https://ashishaggrawal.github.io/diary/why-a-plain-pointer-broke-my-lock-free-queue.html" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%3E%3Crect%20width='100'%20height='100'%20rx='18'%20fill='%23002535'/%3E%3Ctext%20x='50'%20y='54'%20font-family='Georgia,serif'%20font-size='62'%20fill='%23e8dfc8'%20text-anchor='middle'%20dominant-baseline='central'%3EA%3C/text%3E%3C/svg%3E" />
+    <link rel="alternate" type="application/rss+xml" title="Ashish Aggrawal — Technical Log" href="https://ashishaggrawal.github.io/feed.xml" />
+    <meta name="theme-color" content="#e8dfc8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#131e26" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Why a 'plain' pointer broke my lock-free queue" />
+    <meta property="og:description" content="Exploring atomic operations and memory ordering." />
+    <meta property="og:url" content="https://ashishaggrawal.github.io/diary/why-a-plain-pointer-broke-my-lock-free-queue.html" />
+    <meta property="og:image" content="https://ashishaggrawal.github.io/Resources/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="https://ashishaggrawal.github.io/Resources/og-image.png" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Why a 'plain' pointer broke my lock-free queue",
+        "datePublished": "2025-12-31",
+        "author": {
+          "@type": "Person",
+          "name": "Ashish Aggrawal"
+        },
+        "url": "https://ashishaggrawal.github.io/diary/why-a-plain-pointer-broke-my-lock-free-queue.html",
+        "description": "Exploring atomic operations and memory ordering."
+      }
+    </script>
+    <script>
+      (function () {
+        try {
+          var s = localStorage.getItem("theme");
+          var d = s
+            ? s === "dark"
+            : matchMedia("(prefers-color-scheme: dark)").matches;
+          if (d) document.documentElement.setAttribute("data-theme", "dark");
+        } catch (e) {}
+      })();
+    </script>
     <link rel="stylesheet" href="../style.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
   </head>
   <body>
-    <div class="color-bar">
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <svg width="0" height="0" aria-hidden="true" style="position: absolute">
+      <symbol id="ico-github" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></symbol>
+      <symbol id="ico-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z"/></symbol>
+      <symbol id="ico-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M6.3 17.7l-1.4 1.4M19.1 4.9l-1.4 1.4"/></symbol>
+    </svg>
+
+    <div class="color-bar" aria-hidden="true">
       <div class="c1"></div><div class="c2"></div><div class="c3"></div>
-      <div class="c4"></div><div class="c5"></div><div class="c6"></div><div class="c7"></div>
     </div>
 
     <header>
       <div class="container header-content">
-        <div class="logo">
-          <h1><a href="../index.html">Ashish.</a></h1>
-        </div>
+        <a class="logo" href="../index.html">Ashish.</a>
+        <input type="checkbox" id="nav-toggle" class="nav-toggle" />
+        <label for="nav-toggle" class="nav-toggle-btn" aria-label="Toggle navigation menu">
+          <span></span><span></span><span></span>
+        </label>
         <nav>
-          <a href="../index.html">Home</a>
-          <a href="../projects.html">Projects</a>
-          <a href="../diary.html" class="active">Technical Log</a>
+          <a href="../index.html#skills">Skills</a>
+          <a href="../index.html#projects">Projects</a>
+          <a href="../index.html#experience">Experience</a>
+          <a href="../diary.html" class="active" aria-current="page">Technical Log</a>
+          <a href="../index.html#contact">Contact</a>
         </nav>
+        <button class="theme-toggle" type="button" aria-label="Switch color theme">
+          <svg class="ico-moon" aria-hidden="true"><use href="#ico-moon" /></svg>
+          <svg class="ico-sun" aria-hidden="true"><use href="#ico-sun" /></svg>
+        </button>
       </div>
     </header>
 
-    <div class="container" style="padding-top: 60px; padding-bottom: 60px;">
-      <div style="max-width: 800px; margin: 0 auto;">
-        <div style="margin-bottom: 40px; border-bottom: 2px dashed var(--text-navy); padding-bottom: 20px;">
-          <a href="../index.html#diary" class="btn" style="font-size: 16px; padding: 10px 20px;">&larr; Back to Technical Log</a>
-          <h2 class="section-title" style="margin-top: 20px;">Why a 'plain' pointer broke my lock-free queue</h2>
-          <span class="diary-date" style="font-size: 15px;">Dec 31, 2025</span>
+    <main id="main" class="container" style="padding-top: 60px; padding-bottom: 60px;">
+      <article style="max-width: 800px; margin: 0 auto;">
+        <div class="page-intro">
+          <a href="../diary.html" class="btn btn-secondary" style="font-size: 16px; padding: 10px 20px;">&larr; Back to Technical Log</a>
+          <h1 class="section-title" style="margin-top: 20px;">Why a 'plain' pointer broke my lock-free queue</h1>
+          <time class="diary-date" datetime="2025-12-31" style="font-size: 15px;">Dec 31, 2025</time>
         </div>
 
         <div class="post-content">
@@ -52,11 +107,47 @@
 <p>Now I ask a different question when reviewing concurrent code:</p>
 <p>“What guarantees this access is safe when another thread runs at exactly the wrong moment?”</p>
         </div>
-      </div>
-    </div>
+
+        <nav class="post-nav" aria-label="More posts">
+          <a href="floating-point-is-not-associative.html" rel="prev"><span>← Newer</span><strong>Floating-point addition is not associative</strong></a>
+          <a href="portable-types-in-c.html" rel="next"><span>Older →</span><strong>The hidden cost of choosing the wrong variable type</strong></a>
+        </nav>
+      </article>
+    </main>
 
     <footer>
-      <p>&copy; 2026 Ashish Aggrawal.</p>
+      <div class="container footer-inner">
+        <p>&copy; 2026 Ashish Aggrawal.</p>
+        <nav class="footer-links" aria-label="Elsewhere">
+          <a href="https://github.com/ashishaggrawal" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://www.linkedin.com/in/ashishaggrawal" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="../Resources/resume.pdf" target="_blank" rel="noopener" download>R&eacute;sum&eacute;</a>
+          <a href="../feed.xml">RSS</a>
+        </nav>
+      </div>
     </footer>
+    <script>
+      (function () {
+        var root = document.documentElement;
+        var btn = document.querySelector(".theme-toggle");
+        if (btn)
+          btn.addEventListener("click", function () {
+            var dark = root.getAttribute("data-theme") !== "dark";
+            root.setAttribute("data-theme", dark ? "dark" : "light");
+            try {
+              localStorage.setItem("theme", dark ? "dark" : "light");
+            } catch (e) {}
+          });
+        try {
+          matchMedia("(prefers-color-scheme: dark)").addEventListener(
+            "change",
+            function (e) {
+              if (!localStorage.getItem("theme"))
+                root.setAttribute("data-theme", e.matches ? "dark" : "light");
+            }
+          );
+        } catch (e) {}
+      })();
+    </script>
   </body>
 </html>

@@ -3,123 +3,217 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ashish Aggrawal - Technical Log</title>
+    <title>Technical Log — Ashish Aggrawal</title>
+    <meta
+      name="description"
+      content="Ashish Aggrawal's technical log: notes on systems programming, C/C++, and low-level performance, plus a reading list."
+    />
+    <meta name="author" content="Ashish Aggrawal" />
+    <link rel="canonical" href="https://ashishaggrawal.github.io/diary.html" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%3E%3Crect%20width='100'%20height='100'%20rx='18'%20fill='%23002535'/%3E%3Ctext%20x='50'%20y='54'%20font-family='Georgia,serif'%20font-size='62'%20fill='%23e8dfc8'%20text-anchor='middle'%20dominant-baseline='central'%3EA%3C/text%3E%3C/svg%3E"
+    />
+    <link rel="alternate" type="application/rss+xml" title="Ashish Aggrawal — Technical Log" href="https://ashishaggrawal.github.io/feed.xml" />
+    <meta name="theme-color" content="#e8dfc8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#131e26" media="(prefers-color-scheme: dark)" />
+    <script>
+      (function () {
+        try {
+          var s = localStorage.getItem("theme");
+          var d = s
+            ? s === "dark"
+            : matchMedia("(prefers-color-scheme: dark)").matches;
+          if (d) document.documentElement.setAttribute("data-theme", "dark");
+        } catch (e) {}
+      })();
+    </script>
     <link rel="stylesheet" href="style.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
   </head>
   <body>
-    <div class="color-bar">
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <svg width="0" height="0" aria-hidden="true" style="position: absolute">
+      <symbol id="ico-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z"/></symbol>
+      <symbol id="ico-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M6.3 17.7l-1.4 1.4M19.1 4.9l-1.4 1.4"/></symbol>
+    </svg>
+
+    <div class="color-bar" aria-hidden="true">
       <div class="c1"></div>
       <div class="c2"></div>
       <div class="c3"></div>
-      <div class="c4"></div>
-      <div class="c5"></div>
-      <div class="c6"></div>
-      <div class="c7"></div>
     </div>
 
     <header>
       <div class="container header-content">
-        <div class="logo">
-          <h1><a href="index.html">Ashish.</a></h1>
-        </div>
+        <a class="logo" href="index.html">Ashish.</a>
+        <input type="checkbox" id="nav-toggle" class="nav-toggle" />
+        <label for="nav-toggle" class="nav-toggle-btn" aria-label="Toggle navigation menu">
+          <span></span><span></span><span></span>
+        </label>
         <nav>
-          <a href="index.html">Home</a>
-          <a href="projects.html">Projects</a>
-          <a href="diary.html" class="active">Technical Log</a>
+          <a href="index.html#skills">Skills</a>
+          <a href="index.html#projects">Projects</a>
+          <a href="index.html#experience">Experience</a>
+          <a href="diary.html" class="active" aria-current="page">Technical Log</a>
+          <a href="index.html#contact">Contact</a>
         </nav>
+        <button class="theme-toggle" type="button" aria-label="Switch color theme">
+          <svg class="ico-moon" aria-hidden="true"><use href="#ico-moon" /></svg>
+          <svg class="ico-sun" aria-hidden="true"><use href="#ico-sun" /></svg>
+        </button>
       </div>
     </header>
 
-    <div class="container" style="padding-top: 60px; padding-bottom: 60px">
-      <div style="max-width: 800px; margin: 0 auto">
-        <div
-          style="
-            margin-bottom: 40px;
-            border-bottom: 2px dashed var(--text-navy);
-            padding-bottom: 20px;
-          "
-        >
-          <a
-            href="index.html"
-            class="btn"
-            style="font-size: 16px; padding: 10px 20px"
+    <main id="main" class="container" style="padding-top: 60px; padding-bottom: 60px">
+      <div class="archive-block">
+        <div class="page-intro">
+          <a href="index.html" class="btn btn-secondary" style="font-size: 16px; padding: 10px 20px"
             >← Back to Home</a
           >
-          <h2 class="section-title">Engineering Log</h2>
+          <h1 class="section-title">Technical Log</h1>
           <p>
-            A chronological archive of my learnings in Systems, Kernels, and
-            Life.
+            Notes on what I'm learning in systems programming, C/C++, kernels, and
+            low-level performance.
           </p>
         </div>
 
-        <ul class="diary-list">
+        <ul class="diary-list stacked">
+          <!-- DIARY_ARCHIVE:START -->
           <li>
-            <span class="diary-date">Dec 20, 2024</span>
-            <a
-              href="https://github.com/martin0004/drone_control_system"
-              target="blank"
-              class="diary-link"
-              style="font-size: 24px"
-              >Drone Control System - PID Tuning</a
-            >
-            <p class="diary-excerpt" style="font-size: 16px">
-              A deep dive into how pure mathematics translates into physical
-              motor stability.
-            </p>
+            <time class="diary-date" datetime="2026-09-17">Sep 17, 2026</time>
+            <a href="diary/endianness-and-the-raw-pointer-cast.html" class="diary-link">Endianness and the raw pointer cast trap</a>
+            <p class="diary-excerpt">Why casting a byte buffer straight to uint32_t* fails in production — byte order, alignment, strict aliasing — and the memcpy + ntohl fix.</p>
           </li>
-
           <li>
-            <span class="diary-date">Dec 15, 2024</span>
-            <a
-              href="https://www.webpronews.com/toyotas-secret-weapon-inside-fluorite-the-automakers-surprising-leap-into-open-source-game-engine-development/"
-              target="blank"
-              class="diary-link"
-              style="font-size: 24px"
-              >Toyota’s Leap Into Open-Source Engines</a
-            >
-            <p class="diary-excerpt" style="font-size: 16px">
-              A 2026 case study on modular C++ architecture in autonomous
-              stacks.
-            </p>
+            <time class="diary-date" datetime="2026-09-10">Sep 10, 2026</time>
+            <a href="diary/why-abs-int-min-is-negative.html" class="diary-link">Why abs(INT_MIN) returns a negative number</a>
+            <p class="diary-excerpt">Two's complement is asymmetric — TMin has no positive counterpart, and negating it is undefined behavior.</p>
           </li>
-
           <li>
-            <span class="diary-date">Dec 05, 2024</span>
+            <time class="diary-date" datetime="2026-08-13">Aug 13, 2026</time>
+            <a href="diary/overflow-check-may-not-survive-o2.html" class="diary-link">Your signed-overflow check may not survive -O2</a>
+            <p class="diary-excerpt">GCC and Clang can legally delete a post-addition signed-overflow check. Test the operands before the operation.</p>
+          </li>
+          <li>
+            <time class="diary-date" datetime="2026-08-10">Aug 10, 2026</time>
+            <a href="diary/floating-point-is-not-associative.html" class="diary-link">Floating-point addition is not associative</a>
+            <p class="diary-excerpt">Finite precision breaks (a + b) - b, and that's why a compiler can't freely reorder or vectorize float sums.</p>
+          </li>
+          <li>
+            <time class="diary-date" datetime="2025-12-31">Dec 31, 2025</time>
+            <a href="diary/why-a-plain-pointer-broke-my-lock-free-queue.html" class="diary-link">Why a 'plain' pointer broke my lock-free queue</a>
+            <p class="diary-excerpt">Exploring atomic operations and memory ordering.</p>
+          </li>
+          <li>
+            <time class="diary-date" datetime="2025-12-26">Dec 26, 2025</time>
+            <a href="diary/portable-types-in-c.html" class="diary-link">The hidden cost of choosing the wrong variable type</a>
+            <p class="diary-excerpt">Exploring portable types and why int isn't always the right choice.</p>
+          </li>
+          <li>
+            <time class="diary-date" datetime="2025-12-12">Dec 12, 2025</time>
+            <a href="diary/powershell-github-cleanup.html" class="diary-link">5 lines of PowerShell to clean up your GitHub portfolio</a>
+            <p class="diary-excerpt">A small automation that saved a lot of clicking.</p>
+          </li>
+          <!-- DIARY_ARCHIVE:END -->
+        </ul>
+
+        <h2 class="section-title subsection-title">Reading List</h2>
+        <p style="color: var(--text-muted)">
+          Articles and talks from around the web that shaped how I think about
+          this work.
+        </p>
+
+        <ul class="diary-list stacked" style="margin-top: 22px">
+          <li>
             <a
               href="https://optiver.com/working-at-optiver/career-hub/designing-low-latency-cpp-systems/"
-              target="blank"
+              target="_blank"
+              rel="noopener"
               class="diary-link"
-              style="font-size: 24px"
-              >When Nanoseconds Matter: Ultrafast Trading Systems in C++</a
+              >When Nanoseconds Matter: Ultrafast Trading Systems in C++ — Optiver</a
             >
-            <p class="diary-excerpt" style="font-size: 16px">
-              A summary of a high-level talk from Optiver (2025). It breaks down
-              how software engineers in HFT manage CPU memory hierarchies and
-              execution pipelines to shave nanoseconds off trade
+            <p class="diary-excerpt">
+              How HFT engineers manage CPU memory hierarchies and execution
+              pipelines to shave nanoseconds off a trade.
             </p>
           </li>
-
           <li>
-            <span class="diary-date">Nov 28, 2024</span>
+            <a
+              href="https://github.com/martin0004/drone_control_system"
+              target="_blank"
+              rel="noopener"
+              class="diary-link"
+              >Drone Control System — PID Tuning</a
+            >
+            <p class="diary-excerpt">
+              A worked example of how control-loop mathematics translates into
+              physical motor stability.
+            </p>
+          </li>
+          <li>
             <a
               href="https://www.freecodecamp.org/news/vim-language-and-motions-explained/"
-              target="blank"
+              target="_blank"
+              rel="noopener"
               class="diary-link"
-              style="font-size: 24px"
-              >Vim Motions for Speed</a
+              >Vim Language and Motions, Explained — freeCodeCamp</a
             >
-            <p class="diary-excerpt" style="font-size: 16px">
-              Why I finally switched to Vim for C++ development. The ability to
-              jump between functions using ctags is a game changer...
+            <p class="diary-excerpt">
+              The grammar of Vim motions — the reason I switched my C++ workflow
+              over to it.
+            </p>
+          </li>
+          <li>
+            <a
+              href="https://www.webpronews.com/toyotas-secret-weapon-inside-fluorite-the-automakers-surprising-leap-into-open-source-game-engine-development/"
+              target="_blank"
+              rel="noopener"
+              class="diary-link"
+              >Toyota's Leap Into Open-Source Engine Development</a
+            >
+            <p class="diary-excerpt">
+              A case study on modular C++ architecture in autonomous-vehicle
+              software stacks.
             </p>
           </li>
         </ul>
       </div>
-    </div>
+    </main>
 
     <footer>
-      <p>© 2025 Ashish Aggrawal.</p>
+      <div class="container footer-inner">
+        <p>© 2026 Ashish Aggrawal.</p>
+        <nav class="footer-links" aria-label="Elsewhere">
+          <a href="https://github.com/ashishaggrawal" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://www.linkedin.com/in/ashishaggrawal" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="Resources/resume.pdf" target="_blank" rel="noopener" download>Résumé</a>
+          <a href="feed.xml">RSS</a>
+        </nav>
+      </div>
     </footer>
+    <script>
+      (function () {
+        var root = document.documentElement;
+        var btn = document.querySelector(".theme-toggle");
+        if (btn)
+          btn.addEventListener("click", function () {
+            var dark = root.getAttribute("data-theme") !== "dark";
+            root.setAttribute("data-theme", dark ? "dark" : "light");
+            try {
+              localStorage.setItem("theme", dark ? "dark" : "light");
+            } catch (e) {}
+          });
+        try {
+          matchMedia("(prefers-color-scheme: dark)").addEventListener(
+            "change",
+            function (e) {
+              if (!localStorage.getItem("theme"))
+                root.setAttribute("data-theme", e.matches ? "dark" : "light");
+            }
+          );
+        } catch (e) {}
+      })();
+    </script>
   </body>
 </html>

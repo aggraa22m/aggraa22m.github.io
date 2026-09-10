@@ -3,47 +3,82 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ashish Aggrawal - Hello World!!</title>
-    <link rel="stylesheet" href="style.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
-      rel="stylesheet"
+    <title>Ashish Aggrawal — Systems &amp; Performance Engineering</title>
+    <meta
+      name="description"
+      content="Ashish Aggrawal — computer science student focused on low-level systems, high-performance computing and C/C++. Projects, experience and a technical log."
     />
-    <style>
-      .skill-tag {
-        cursor: pointer;
+    <meta name="author" content="Ashish Aggrawal" />
+    <link rel="canonical" href="https://ashishaggrawal.github.io/" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%3E%3Crect%20width='100'%20height='100'%20rx='18'%20fill='%23002535'/%3E%3Ctext%20x='50'%20y='54'%20font-family='Georgia,serif'%20font-size='62'%20fill='%23e8dfc8'%20text-anchor='middle'%20dominant-baseline='central'%3EA%3C/text%3E%3C/svg%3E"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Ashish Aggrawal — Systems &amp; Performance Engineering" />
+    <meta
+      property="og:description"
+      content="Computer science student focused on low-level systems, high-performance computing and C/C++."
+    />
+    <meta property="og:url" content="https://ashishaggrawal.github.io/" />
+    <meta property="og:image" content="https://ashishaggrawal.github.io/Resources/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="https://ashishaggrawal.github.io/Resources/og-image.png" />
+    <link rel="alternate" type="application/rss+xml" title="Ashish Aggrawal — Technical Log" href="https://ashishaggrawal.github.io/feed.xml" />
+    <meta name="theme-color" content="#e8dfc8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#131e26" media="(prefers-color-scheme: dark)" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Ashish Aggrawal",
+        "url": "https://ashishaggrawal.github.io/",
+        "jobTitle": "Systems & Performance Engineering",
+        "alumniOf": { "@type": "CollegeOrUniversity", "name": "Trent University" },
+        "knowsAbout": ["C", "C++", "Systems programming", "High-performance computing", "Operating systems"],
+        "sameAs": [
+          "https://github.com/ashishaggrawal",
+          "https://www.linkedin.com/in/ashishaggrawal"
+        ]
       }
-      .view-archive-link {
-        display: inline-block;
-        margin-top: 20px;
-        font-family: "Courier New", monospace;
-        font-weight: bold;
-        font-size: 18px;
-        color: var(--text-navy);
-        border-bottom: 2px solid var(--rust);
-      }
-      .view-archive-link:hover {
-        color: var(--rust);
-        background-color: #fff8e1;
-      }
-    </style>
+    </script>
+    <script>
+      (function () {
+        try {
+          var s = localStorage.getItem("theme");
+          var d = s
+            ? s === "dark"
+            : matchMedia("(prefers-color-scheme: dark)").matches;
+          if (d) document.documentElement.setAttribute("data-theme", "dark");
+        } catch (e) {}
+      })();
+    </script>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="color-bar">
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <svg width="0" height="0" aria-hidden="true" style="position: absolute">
+      <symbol id="ico-github" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></symbol>
+      <symbol id="ico-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z"/></symbol>
+      <symbol id="ico-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M6.3 17.7l-1.4 1.4M19.1 4.9l-1.4 1.4"/></symbol>
+    </svg>
+
+    <div class="color-bar" aria-hidden="true">
       <div class="c1"></div>
       <div class="c2"></div>
       <div class="c3"></div>
-      <div class="c4"></div>
-      <div class="c5"></div>
-      <div class="c6"></div>
-      <div class="c7"></div>
     </div>
 
     <header>
       <div class="container header-content">
-        <div class="logo">
-          <h1>Ashish.</h1>
-        </div>
+        <a class="logo" href="index.html">Ashish.</a>
+        <input type="checkbox" id="nav-toggle" class="nav-toggle" />
+        <label for="nav-toggle" class="nav-toggle-btn" aria-label="Toggle navigation menu">
+          <span></span><span></span><span></span>
+        </label>
         <nav>
           <a href="#skills">Skills</a>
           <a href="#projects">Projects</a>
@@ -51,6 +86,10 @@
           <a href="#diary">Technical Log</a>
           <a href="#contact">Contact</a>
         </nav>
+        <button class="theme-toggle" type="button" aria-label="Switch color theme">
+          <svg class="ico-moon" aria-hidden="true"><use href="#ico-moon" /></svg>
+          <svg class="ico-sun" aria-hidden="true"><use href="#ico-sun" /></svg>
+        </button>
       </div>
     </header>
 
@@ -58,36 +97,43 @@
       <section class="hero">
         <div class="hero-content">
           <div class="hero-text">
-            <h1>I am Ashish Aggrawal<span class="cursor-blink"></span></h1>
+            <h1>I am Ashish Aggrawal</h1>
 
-            <h2>
+            <p class="hero-tagline">
               From Operational Excellence to
               <span class="highlight-rust">Low-Level Optimization</span>
-            </h2>
+            </p>
 
             <p>
-              Leveraging 12+ years of leadership experience to build software
-              that matters. I specialize in
+              Bringing 12+ years of operations leadership into computer science.
+              I'm focused on
               <span class="txt-rust">high-performance computing</span> and
-              <span class="txt-teal">systems architecture</span>.
+              <span class="txt-teal">systems architecture</span>, and I build in
+              C and C++.
             </p>
 
             <div class="hero-buttons">
-              <a href="https://github.com/aggraa22m" target="_blank" class="btn"
+              <a
+                href="https://github.com/ashishaggrawal"
+                target="_blank"
+                rel="noopener"
+                class="btn btn-secondary"
                 >GitHub</a
               >
               <a
                 href="https://www.linkedin.com/in/ashishaggrawal"
                 target="_blank"
-                class="btn"
+                rel="noopener"
+                class="btn btn-secondary"
                 >LinkedIn</a
               >
               <a
-                href="/Resources/resume.pdf"
+                href="Resources/resume.pdf"
                 target="_blank"
-                class="btn"
-                style="border-color: var(--rust); color: var(--rust)"
-                >Download CV</a
+                rel="noopener"
+                download
+                class="btn btn-secondary"
+                >Resume</a
               >
             </div>
           </div>
@@ -97,116 +143,89 @@
               src="Resources/headshot.jpg"
               alt="Ashish Aggrawal"
               class="hero-img"
+              width="416"
+              height="476"
+              decoding="async"
             />
           </div>
         </div>
       </section>
 
       <div class="main-layout">
-        <main class="full-width-content">
+        <main class="full-width-content" id="main">
           <section id="skills" class="skills-section">
             <div class="section-header">
-              <h3 class="section-title">Technical Arsenal</h3>
+              <h2 class="section-title">Technical Arsenal</h2>
             </div>
-            <div class="skills-subheading">Languages & Tools</div>
+            <span class="skills-subheading">Languages &amp; Tools</span>
             <div class="skills-grid">
-              <div class="skill-card" title="C">
+              <div class="skill-card">
                 <span class="skill-icon-badge"
-                  ><img
-                    class="skill-icon"
-                    src="https://cdn.simpleicons.org/c/00599C"
-                    alt="C"
+                  ><img class="skill-icon" src="Resources/icons/c.svg" alt="C" width="30" height="30" loading="lazy"
                 /></span>
                 <span class="skill-label">C</span>
               </div>
-              <div class="skill-card" title="C++">
+              <div class="skill-card">
                 <span class="skill-icon-badge"
-                  ><img
-                    class="skill-icon"
-                    src="https://cdn.simpleicons.org/cplusplus"
-                    alt="C++"
+                  ><img class="skill-icon" src="Resources/icons/cplusplus.svg" alt="C++" width="30" height="30" loading="lazy"
                 /></span>
                 <span class="skill-label">C++</span>
               </div>
-              <div class="skill-card" title="Python">
+              <div class="skill-card">
                 <span class="skill-icon-badge"
-                  ><img
-                    class="skill-icon"
-                    src="https://cdn.simpleicons.org/python"
-                    alt="Python"
+                  ><img class="skill-icon" src="Resources/icons/python.svg" alt="Python" width="30" height="30" loading="lazy"
                 /></span>
                 <span class="skill-label">Python</span>
               </div>
-              <div class="skill-card" title="Linux">
+              <div class="skill-card">
                 <span class="skill-icon-badge"
-                  ><img
-                    class="skill-icon"
-                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linux/linux-original.svg"
-                    alt="Linux"
+                  ><img class="skill-icon" src="Resources/icons/linux.svg" alt="Linux" width="30" height="30" loading="lazy"
                 /></span>
                 <span class="skill-label">Linux</span>
               </div>
-              <div class="skill-card" title="PowerShell">
+              <div class="skill-card">
                 <span class="skill-icon-badge"
-                  ><img
-                    class="skill-icon"
-                    src="Resources/powershell.png"
-                    alt="PowerShell"
+                  ><img class="skill-icon" src="Resources/powershell.png" alt="PowerShell" width="30" height="30" loading="lazy"
                 /></span>
                 <span class="skill-label">PowerShell</span>
               </div>
-              <div class="skill-card" title="Docker">
+              <div class="skill-card">
                 <span class="skill-icon-badge"
-                  ><img
-                    class="skill-icon"
-                    src="https://cdn.simpleicons.org/docker"
-                    alt="Docker"
+                  ><img class="skill-icon" src="Resources/icons/docker.svg" alt="Docker" width="30" height="30" loading="lazy"
                 /></span>
                 <span class="skill-label">Docker</span>
               </div>
-              <div class="skill-card" title="Git">
+              <div class="skill-card">
                 <span class="skill-icon-badge"
-                  ><img
-                    class="skill-icon"
-                    src="https://cdn.simpleicons.org/git"
-                    alt="Git"
+                  ><img class="skill-icon" src="Resources/icons/git.svg" alt="Git" width="30" height="30" loading="lazy"
                 /></span>
                 <span class="skill-label">Git</span>
               </div>
             </div>
 
-            <div class="skills-subheading">AI / Machine Learning</div>
+            <span class="skills-subheading">AI / Machine Learning</span>
             <div class="skills-grid">
-              <div class="skill-card" title="PyTorch">
+              <div class="skill-card">
                 <span class="skill-icon-badge"
-                  ><img
-                    class="skill-icon"
-                    src="https://cdn.simpleicons.org/pytorch"
-                    alt="PyTorch"
+                  ><img class="skill-icon" src="Resources/icons/pytorch.svg" alt="PyTorch" width="30" height="30" loading="lazy"
                 /></span>
                 <span class="skill-label">PyTorch</span>
               </div>
-              <div class="skill-card" title="NumPy">
+              <div class="skill-card">
                 <span class="skill-icon-badge"
-                  ><img
-                    class="skill-icon"
-                    src="https://cdn.simpleicons.org/numpy"
-                    alt="NumPy"
+                  ><img class="skill-icon" src="Resources/icons/numpy.svg" alt="NumPy" width="30" height="30" loading="lazy"
                 /></span>
                 <span class="skill-label">NumPy</span>
               </div>
-              <div class="skill-card" title="scikit-learn">
+              <div class="skill-card">
                 <span class="skill-icon-badge"
-                  ><img
-                    class="skill-icon"
-                    src="https://cdn.simpleicons.org/scikitlearn"
-                    alt="scikit-learn"
+                  ><img class="skill-icon" src="Resources/icons/scikitlearn.svg" alt="scikit-learn" width="30" height="30" loading="lazy"
                 /></span>
                 <span class="skill-label">scikit-learn</span>
               </div>
             </div>
 
-            <div class="skills-subheading">Focus Areas</div>
+            <span class="skills-subheading">Focus Areas</span>
             <div class="skill-chip-row">
               <span class="skill-chip">Assembly</span>
               <span class="skill-chip">SQL</span>
@@ -224,18 +243,33 @@
 
           <section id="projects">
             <div class="section-header">
-              <h3 class="section-title">Featured Projects</h3>
+              <h2 class="section-title">Featured Projects</h2>
             </div>
 
             <div class="projects-grid">
               <div class="project-card project-wip">
-                <div class="card-thumb bg-green">
-                  <p class="card-thumb-title">Limit Order Book (In Progress)</p>
+                <div class="card-thumb">
+                  <svg viewBox="0 0 400 150" role="img" aria-label="Order book depth: bids versus asks around the spread">
+                    <line x1="200" y1="10" x2="200" y2="120" stroke="#002535" stroke-width="2" stroke-dasharray="4 4" />
+                    <rect x="138" y="16" width="60" height="13" fill="#0a5a60" stroke="#002535" stroke-width="2" />
+                    <rect x="103" y="36" width="95" height="13" fill="#0a5a60" stroke="#002535" stroke-width="2" />
+                    <rect x="68" y="56" width="130" height="13" fill="#0a5a60" stroke="#002535" stroke-width="2" />
+                    <rect x="33" y="76" width="165" height="13" fill="#0a5a60" stroke="#002535" stroke-width="2" />
+                    <rect x="202" y="16" width="55" height="13" fill="#8f201c" stroke="#002535" stroke-width="2" />
+                    <rect x="202" y="36" width="90" height="13" fill="#8f201c" stroke="#002535" stroke-width="2" />
+                    <rect x="202" y="56" width="125" height="13" fill="#8f201c" stroke="#002535" stroke-width="2" />
+                    <rect x="202" y="76" width="160" height="13" fill="#8f201c" stroke="#002535" stroke-width="2" />
+                    <line x1="12" y1="112" x2="388" y2="112" stroke="#002535" stroke-width="2" />
+                    <text x="118" y="134" font-family="'IBM Plex Mono',monospace" font-size="12" fill="#002535" text-anchor="middle">BIDS</text>
+                    <text x="288" y="134" font-family="'IBM Plex Mono',monospace" font-size="12" fill="#002535" text-anchor="middle">ASKS</text>
+                  </svg>
                 </div>
                 <div class="card-body">
+                  <span class="tag">In Progress</span>
+                  <h3 class="card-title">Limit Order Book</h3>
                   <p>
-                    C++20 limit order book, currently being built and
-                    benchmarked for latency.
+                    A C++20 limit order book being built and benchmarked for
+                    matching latency under load.
                   </p>
                   <div class="card-pills">
                     <span class="pill">C++20</span>
@@ -245,18 +279,40 @@
               </div>
 
               <a
-                href="https://github.com/aggraa22m/Custom-C-Memory-Allocator-Simulator"
+                href="https://github.com/ashishaggrawal/Custom-C-Memory-Allocator-Simulator"
                 target="_blank"
-                class="project-card"
-                style="text-decoration: none; color: inherit"
+                rel="noopener"
+                class="project-card project-card--teal"
               >
-                <div class="card-thumb bg-blue">
-                  <p class="card-thumb-title">LockFree Queue</p>
+                <span class="card-repo" aria-hidden="true"><svg><use href="#ico-github" /></svg></span>
+                <div class="card-thumb">
+                  <svg viewBox="0 0 400 150" role="img" aria-label="Lock-free linked queue with head and tail pointers and a CAS retry">
+                    <defs>
+                      <marker id="lfq-a" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0 0L6 3L0 6z" fill="#002535" /></marker>
+                      <marker id="lfq-r" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0 0L6 3L0 6z" fill="#b5450b" /></marker>
+                      <marker id="lfq-t" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0 0L6 3L0 6z" fill="#0a5a60" /></marker>
+                    </defs>
+                    <rect x="22" y="54" width="72" height="40" rx="6" fill="#f8f5ec" stroke="#002535" stroke-width="2" />
+                    <rect x="150" y="54" width="72" height="40" rx="6" fill="#f8f5ec" stroke="#002535" stroke-width="2" />
+                    <rect x="278" y="54" width="72" height="40" rx="6" fill="#f8f5ec" stroke="#002535" stroke-width="2" />
+                    <line x1="94" y1="74" x2="146" y2="74" stroke="#002535" stroke-width="2" marker-end="url(#lfq-a)" />
+                    <line x1="222" y1="74" x2="274" y2="74" stroke="#002535" stroke-width="2" marker-end="url(#lfq-a)" />
+                    <line x1="350" y1="74" x2="378" y2="74" stroke="#002535" stroke-width="2" marker-end="url(#lfq-a)" />
+                    <text x="382" y="79" font-family="'IBM Plex Mono',monospace" font-size="13" fill="#002535">&#8709;</text>
+                    <text x="26" y="34" font-family="'IBM Plex Mono',monospace" font-size="12" font-weight="600" fill="#b5450b">HEAD</text>
+                    <line x1="40" y1="38" x2="46" y2="52" stroke="#b5450b" stroke-width="2" marker-end="url(#lfq-r)" />
+                    <text x="282" y="34" font-family="'IBM Plex Mono',monospace" font-size="12" font-weight="600" fill="#b5450b">TAIL</text>
+                    <line x1="300" y1="38" x2="306" y2="52" stroke="#b5450b" stroke-width="2" marker-end="url(#lfq-r)" />
+                    <path d="M340 96 q34 26 -6 34 q-40 8 -40 -18" fill="none" stroke="#0a5a60" stroke-width="2" stroke-dasharray="4 3" marker-end="url(#lfq-t)" />
+                    <text x="296" y="140" font-family="'IBM Plex Mono',monospace" font-size="11" fill="#0a5a60">CAS retry</text>
+                  </svg>
                 </div>
                 <div class="card-body">
+                  <h3 class="card-title">Lock-Free Queue</h3>
                   <p>
-                    High-performance non-blocking queue using the Michael &
-                    Scott algorithm to eliminate mutex contention.
+                    A non-blocking queue built on the Michael &amp; Scott
+                    algorithm — atomic compare-and-swap instead of mutex
+                    contention.
                   </p>
                   <div class="card-pills">
                     <span class="pill">C</span>
@@ -266,18 +322,28 @@
               </a>
 
               <a
-                href="https://github.com/aggraa22m/Safety-Watchdog"
+                href="https://github.com/ashishaggrawal/Safety-Watchdog"
                 target="_blank"
-                class="project-card"
-                style="text-decoration: none; color: inherit"
+                rel="noopener"
+                class="project-card project-card--berry"
               >
-                <div class="card-thumb bg-red">
-                  <p class="card-thumb-title">Safety Watchdog</p>
+                <span class="card-repo" aria-hidden="true"><svg><use href="#ico-github" /></svg></span>
+                <div class="card-thumb">
+                  <svg viewBox="0 0 400 150" role="img" aria-label="Watchdog timing: heartbeat kicks stop, deadline missed, E-Stop asserted">
+                    <line x1="12" y1="110" x2="388" y2="110" stroke="#002535" stroke-width="2" />
+                    <polyline points="12,92 40,92 40,48 56,48 56,92 90,92 90,48 106,48 106,92 140,92 140,48 156,48 156,92 190,92 190,48 206,48 206,92 226,92" fill="none" stroke="#0a5a60" stroke-width="2.5" stroke-linejoin="round" />
+                    <line x1="226" y1="92" x2="300" y2="92" stroke="#002535" stroke-width="2.5" stroke-dasharray="3 4" />
+                    <line x1="300" y1="24" x2="300" y2="118" stroke="#d98a1f" stroke-width="2" stroke-dasharray="5 3" />
+                    <text x="300" y="18" font-family="'IBM Plex Mono',monospace" font-size="10" fill="#a9701a" text-anchor="middle">DEADLINE</text>
+                    <line x1="332" y1="24" x2="332" y2="118" stroke="#8f201c" stroke-width="3" />
+                    <text x="388" y="70" font-family="'IBM Plex Mono',monospace" font-size="11" font-weight="600" fill="#8f201c" text-anchor="end">E-STOP</text>
+                  </svg>
                 </div>
                 <div class="card-body">
+                  <h3 class="card-title">Safety Watchdog</h3>
                   <p>
-                    Real-time C++20 watchdog guaranteeing E-Stop states if
-                    control software deadlocks or misses timing deadlines.
+                    A real-time C++20 watchdog that forces a safe E-Stop state
+                    when control software deadlocks or misses a timing deadline.
                   </p>
                   <div class="card-pills">
                     <span class="pill">C++20</span>
@@ -287,22 +353,41 @@
               </a>
 
               <a
-                href="https://fraud-analyzer-ml.streamlit.app/"
+                href="https://github.com/ashishaggrawal/Fraud-Detection"
                 target="_blank"
-                class="project-card"
-                style="text-decoration: none; color: inherit"
+                rel="noopener"
+                class="project-card project-card--gold"
               >
-                <div class="card-thumb bg-yellow">
-                  <p class="card-thumb-title">Fraud Sentinel</p>
+                <span class="card-repo" aria-hidden="true"><svg><use href="#ico-github" /></svg></span>
+                <div class="card-thumb">
+                  <svg viewBox="0 0 400 152" role="img" aria-label="Anomaly detection: a normal cluster, two flagged outliers, and a risk score near the top of the scale">
+                    <g fill="#002535">
+                      <circle cx="60" cy="66" r="3" /><circle cx="76" cy="56" r="3" /><circle cx="88" cy="74" r="3" />
+                      <circle cx="98" cy="62" r="3" /><circle cx="70" cy="82" r="3" /><circle cx="108" cy="70" r="3" />
+                      <circle cx="84" cy="66" r="3" /><circle cx="54" cy="72" r="3" /><circle cx="94" cy="86" r="3" />
+                      <circle cx="118" cy="58" r="3" /><circle cx="66" cy="60" r="3" /><circle cx="102" cy="78" r="3" />
+                    </g>
+                    <circle cx="250" cy="34" r="4" fill="#8f201c" />
+                    <circle cx="250" cy="34" r="12" fill="none" stroke="#b5450b" stroke-width="2" />
+                    <circle cx="312" cy="86" r="4" fill="#8f201c" />
+                    <circle cx="312" cy="86" r="12" fill="none" stroke="#b5450b" stroke-width="2" />
+                    <line x1="24" y1="104" x2="376" y2="104" stroke="#002535" stroke-width="2" />
+                    <rect x="24" y="120" width="352" height="12" fill="#efe6d2" stroke="#002535" stroke-width="2" />
+                    <rect x="24" y="120" width="286" height="12" fill="#0a5a60" />
+                    <polygon points="310,116 316,107 304,107" fill="#8f201c" />
+                    <text x="24" y="147" font-family="'IBM Plex Mono',monospace" font-size="10" fill="#002535">RISK 0</text>
+                    <text x="376" y="147" font-family="'IBM Plex Mono',monospace" font-size="10" fill="#002535" text-anchor="end">100</text>
+                  </svg>
                 </div>
                 <div class="card-body">
+                  <h3 class="card-title">Fraud Sentinel</h3>
                   <p>
-                    Smart detection system using Isolation Forest to identify
-                    tax evasion and credit fraud with 0-100 risk scoring.
+                    An Isolation Forest model that flags tax-evasion and
+                    credit-fraud patterns and returns a 0–100 risk score.
                   </p>
                   <div class="card-pills">
                     <span class="pill">Python</span>
-                    <span class="pill">Scikit-learn</span>
+                    <span class="pill">scikit-learn</span>
                   </div>
                 </div>
               </a>
@@ -311,13 +396,13 @@
 
           <section id="experience" class="experience-section">
             <div class="section-header">
-              <h3 class="section-title">Experience Timeline</h3>
+              <h2 class="section-title">Experience Timeline</h2>
             </div>
 
             <div class="timeline-item">
               <div class="role">Student — Systems Programming Focus</div>
               <div class="company">Trent University</div>
-              <span class="date">2023 - Present</span>
+              <span class="date">2023 – Present</span>
               <p>
                 Pursuing Computer Science. Dean's Honour Roll. Focusing on
                 low-level systems and OS architecture.
@@ -327,7 +412,7 @@
             <div class="timeline-item">
               <div class="role">Operational Leader</div>
               <div class="company">Amazon</div>
-              <span class="date">3 Years</span>
+              <span class="date">3 years</span>
               <p>
                 Managed large-scale operations. Developed leadership skills in
                 high-pressure environments.
@@ -336,63 +421,69 @@
 
             <div class="timeline-item">
               <div class="role">Various Professional Roles</div>
-              <div class="company">Tech & Operations</div>
-              <span class="date">12 Years</span>
+              <div class="company">Tech &amp; Operations</div>
+              <span class="date">Earlier career</span>
               <p>
-                Total of 12+ years professional experience across various
-                sectors.
+                12+ years of total professional experience across operations and
+                technology before returning to full-time study.
               </p>
             </div>
           </section>
 
           <section id="diary" class="diary-section">
             <div class="section-header">
-              <h3 class="section-title">Technical Log</h3>
+              <h2 class="section-title">Technical Log</h2>
             </div>
             <ul class="diary-list horizontal-diary">
               <!-- DIARY_CARDS:START -->
               <li>
-                <span class="diary-date">Dec 31, 2025</span>
+                <time class="diary-date" datetime="2026-09-17">Sep 17, 2026</time>
+                <a href="diary/endianness-and-the-raw-pointer-cast.html" class="diary-link">Endianness and the raw pointer cast trap</a>
+                <p class="diary-excerpt">Why casting a byte buffer straight to uint32_t* fails in production — byte order, alignment, strict aliasing — and the memcpy + ntohl fix.</p>
+              </li>
+              <li>
+                <time class="diary-date" datetime="2026-09-10">Sep 10, 2026</time>
+                <a href="diary/why-abs-int-min-is-negative.html" class="diary-link">Why abs(INT_MIN) returns a negative number</a>
+                <p class="diary-excerpt">Two's complement is asymmetric — TMin has no positive counterpart, and negating it is undefined behavior.</p>
+              </li>
+              <li>
+                <time class="diary-date" datetime="2026-08-13">Aug 13, 2026</time>
+                <a href="diary/overflow-check-may-not-survive-o2.html" class="diary-link">Your signed-overflow check may not survive -O2</a>
+                <p class="diary-excerpt">GCC and Clang can legally delete a post-addition signed-overflow check. Test the operands before the operation.</p>
+              </li>
+              <li>
+                <time class="diary-date" datetime="2026-08-10">Aug 10, 2026</time>
+                <a href="diary/floating-point-is-not-associative.html" class="diary-link">Floating-point addition is not associative</a>
+                <p class="diary-excerpt">Finite precision breaks (a + b) - b, and that's why a compiler can't freely reorder or vectorize float sums.</p>
+              </li>
+              <li>
+                <time class="diary-date" datetime="2025-12-31">Dec 31, 2025</time>
                 <a href="diary/why-a-plain-pointer-broke-my-lock-free-queue.html" class="diary-link">Why a 'plain' pointer broke my lock-free queue</a>
                 <p class="diary-excerpt">Exploring atomic operations and memory ordering.</p>
-              </li>
-              <li>
-                <span class="diary-date">Dec 26, 2025</span>
-                <a href="diary/portable-types-in-c.html" class="diary-link">The hidden cost of choosing the wrong variable type</a>
-                <p class="diary-excerpt">Exploring portable types and why int isn't always the right choice.</p>
-              </li>
-              <li>
-                <span class="diary-date">Dec 12, 2025</span>
-                <a href="diary/powershell-github-cleanup.html" class="diary-link">5 lines of PowerShell to clean up your GitHub portfolio</a>
-                <p class="diary-excerpt">A small automation that saved a lot of clicking.</p>
               </li>
               <!-- DIARY_CARDS:END -->
             </ul>
 
-            <div style="margin-top: 30px; text-align: center">
-              <a
-                href="diary.html"
-                class="view-archive-link"
-                style="font-size: 16px"
-                >View All Logs →</a
-              >
+            <div class="view-archive-row">
+              <a href="diary.html" class="view-archive-link">View All Logs →</a>
             </div>
           </section>
 
           <section id="contact" class="contact-section">
             <div class="section-header">
-              <h3 class="section-title">Contact</h3>
+              <h2 class="section-title">Contact</h2>
             </div>
-            <p style="margin-bottom: 24px">
+            <p style="margin-bottom: 22px; color: var(--text-muted)">
               Open to systems and performance engineering roles — reach out
               directly.
             </p>
             <div class="hero-buttons">
-              <a href="mailto:ashish22m@hotmail.com" class="btn">Email</a>
+              <a href="mailto:ashish22m@hotmail.com" class="btn btn-secondary">Email</a>
               <a
                 href="https://www.linkedin.com/in/ashishaggrawal"
                 target="_blank"
-                class="btn"
+                rel="noopener"
+                class="btn btn-secondary"
                 >LinkedIn</a
               >
             </div>
@@ -401,7 +492,38 @@
       </div>
     </div>
     <footer>
-      <p>© 2026 Ashish Aggrawal.</p>
+      <div class="container footer-inner">
+        <p>© 2026 Ashish Aggrawal.</p>
+        <nav class="footer-links" aria-label="Elsewhere">
+          <a href="https://github.com/ashishaggrawal" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://www.linkedin.com/in/ashishaggrawal" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="Resources/resume.pdf" target="_blank" rel="noopener" download>Résumé</a>
+          <a href="feed.xml">RSS</a>
+        </nav>
+      </div>
     </footer>
+    <script>
+      (function () {
+        var root = document.documentElement;
+        var btn = document.querySelector(".theme-toggle");
+        if (btn)
+          btn.addEventListener("click", function () {
+            var dark = root.getAttribute("data-theme") !== "dark";
+            root.setAttribute("data-theme", dark ? "dark" : "light");
+            try {
+              localStorage.setItem("theme", dark ? "dark" : "light");
+            } catch (e) {}
+          });
+        try {
+          matchMedia("(prefers-color-scheme: dark)").addEventListener(
+            "change",
+            function (e) {
+              if (!localStorage.getItem("theme"))
+                root.setAttribute("data-theme", e.matches ? "dark" : "light");
+            }
+          );
+        } catch (e) {}
+      })();
+    </script>
   </body>
 </html>
