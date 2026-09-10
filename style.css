@@ -201,9 +201,9 @@ section[id] {
 .skills-subheading {
   display: block;
   font-family: var(--font-mono);
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 2px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1px;
   text-transform: uppercase;
   color: var(--accent);
   margin: 34px 0 16px;
@@ -551,7 +551,6 @@ section + section,
     gap: 12px;
     padding: 20px 10px;
     border-bottom-width: 5px;
-    box-shadow: var(--shadow);
   }
   .skill-card--core .skill-icon-badge {
     width: 60px;
@@ -566,42 +565,21 @@ section + section,
   }
 }
 
+/* Skill cards and focus chips are informational, not interactive — flat,
+   no drop shadow, no hover-lift, so they don't read as buttons. */
 .skill-card {
   background: var(--surface);
   border: 2px solid var(--border);
   border-bottom: 4px solid var(--accent);
   border-radius: 10px;
-  box-shadow: var(--shadow-sm);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 10px;
   padding: 18px 8px;
-  transition: transform 0.15s, box-shadow 0.15s;
 }
-.skill-card:hover {
-  transform: translate(-2px, -2px);
-  box-shadow: var(--shadow);
-}
-
-.skill-card--core {
-  gap: 12px;
-  padding: 20px 10px;
-  border-bottom-width: 5px;
-  box-shadow: var(--shadow);
-}
-.skill-card--core .skill-icon-badge {
-  width: 60px;
-  height: 60px;
-}
-.skill-card--core .skill-icon {
-  width: 34px;
-  height: 34px;
-}
-.skill-card--core .skill-label {
-  font-size: 15px;
-}
+/* .skill-card--core emphasis lives in the min-width:901px block above */
 
 .skill-icon-badge {
   width: 52px;
@@ -637,11 +615,11 @@ section + section,
 }
 .focus-group-label {
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 600;
   letter-spacing: 0.5px;
-  color: var(--text-muted);
-  margin-bottom: 9px;
+  color: var(--text);
+  margin-bottom: 10px;
 }
 .focus-group-label::before {
   content: "// ";
@@ -653,22 +631,17 @@ section + section,
   flex-wrap: wrap;
   gap: 10px;
 }
+/* flat tags — bordered, no shadow, no hover: reads as a label, not a button */
 .skill-chip {
   background: var(--surface);
-  border: 2px solid var(--border);
+  border: 1.5px solid var(--border);
   border-radius: 20px;
-  padding: 8px 16px;
+  padding: 7px 15px;
   font-family: var(--font-mono);
   font-size: 13px;
   font-weight: 600;
   color: var(--text);
-  box-shadow: var(--shadow-sm);
   white-space: nowrap;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
-}
-.skill-chip:hover {
-  transform: translate(-2px, -2px);
-  box-shadow: var(--shadow);
 }
 
 /* --- 10. PROJECTS --- */
