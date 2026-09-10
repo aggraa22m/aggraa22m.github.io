@@ -533,36 +533,14 @@ section + section,
 }
 
 /* --- 9. SKILLS --- */
+/* One uniform tile size for every group (Core, Tools & Libraries, …);
+   auto-fit + a max track width keeps tiles from stretching, and the grid
+   packs to the left rather than filling the row. */
 .skills-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(108px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(104px, 116px));
+  justify-content: start;
   gap: 14px;
-  max-width: 720px;
-}
-
-/* the emphasised "Core" row — larger cards, four across (wide screens only;
-   on narrow screens it falls back to the same compact grid as the rest) */
-@media (min-width: 901px) {
-  .skills-grid--core {
-    grid-template-columns: repeat(4, 1fr);
-    gap: 16px;
-  }
-  .skill-card--core {
-    gap: 12px;
-    padding: 20px 10px;
-    border-bottom-width: 5px;
-  }
-  .skill-card--core .skill-icon-badge {
-    width: 60px;
-    height: 60px;
-  }
-  .skill-card--core .skill-icon {
-    width: 34px;
-    height: 34px;
-  }
-  .skill-card--core .skill-label {
-    font-size: 15px;
-  }
 }
 
 /* Skill cards and focus chips are informational, not interactive — flat,
@@ -579,7 +557,6 @@ section + section,
   gap: 10px;
   padding: 18px 8px;
 }
-/* .skill-card--core emphasis lives in the min-width:901px block above */
 
 .skill-icon-badge {
   width: 52px;
@@ -1165,8 +1142,8 @@ footer {
   }
 
   .skills-grid {
-    grid-template-columns: repeat(auto-fill, minmax(96px, 1fr));
-    max-width: none;
+    grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+    justify-content: stretch;
   }
   .projects-grid {
     grid-template-columns: 1fr;
